@@ -53,7 +53,7 @@ EnQueue(x) {
 Sorting
 ---
 
-## Bubble Sort
+### Bubble Sort
 * O(n^2)
   * 满有序度 : n\*(n-1)/2
   * 逆序度 = 满有序度 - 有序度
@@ -62,12 +62,12 @@ Sorting
 * Stable _[means relative order of same values won't be changed]_
   * usage : sorted by more than two attributes _[e.g. orders sorted by time and price]_
 
-## Insertion Sort
+### Insertion Sort
 * Time complexity : O(n^2)
 * Sorted in place _[space complexity O(1)]_
 * Stable
 
-## Selection Sort
+### Selection Sort
 
 
 
