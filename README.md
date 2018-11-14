@@ -63,11 +63,20 @@ Sorting
   * usage : sorted by more than two attributes _[e.g. orders sorted by time and price]_
 
 ### Insertion Sort
+Sorted and unsorted parts, insert first unsorted to sorted part.
 * Time complexity : O(n^2)
 * Sorted in place _[space complexity O(1)]_
 * Stable
 
+## Shell's Sort
+**TODO**
+
 ### Selection Sort
+Sorted and un-sorted parts, each loop selects smallest item from un-sorted and append to the end of sorted part.
+* Time complexity : O(n^2)
+* Sorted in place
+* Unstable
+
 
 
 
