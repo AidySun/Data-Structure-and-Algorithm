@@ -59,7 +59,7 @@ Sorting
   * 逆序度 = 满有序度 - 有序度
   * 逆序度 即 交换次数
 * Sorted in place _[space complexity O(1)]_
-* Stable _[means relative order of same values won't be changed]_
+* Stable _[means relative order of same values will not be changed]_
   * usage : sorted by more than two attributes _[e.g. orders sorted by time and price]_
 
 ### Insertion Sort
