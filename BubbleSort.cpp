@@ -1,9 +1,11 @@
 
-#include "iostream"
+#include <iostream>
+#include "timer.h"
+
 using namespace std;
 
 /*
-rm ./a.out && g++ BubbleSort.cpp && ./a.out
+rm ./bubble.out ; g++ BubbleSort.cpp -o bubble.out && ./bubble.out
 */
 // Array based
 class Solution {
@@ -18,15 +20,19 @@ public:
 
 	static void sortArray(int* a, int n, int& switchTimes) {
 		switchTimes = 0;
+
 		for (int i = 0; i < n; i++) {
+			bool hasSwitch = false;
 			for (int j = 0; j < n-i-1; j++) {
 				if (a[j] > a[j+1]) {
 					switchTimes++;
 					int t = a[j];
 					a[j] = a[j+1];
 					a[j+1] = t;
+					hasSwitch = true;
 				}
 			}
+			if (!hasSwitch) break;
 		}
 	}
 
@@ -34,30 +40,25 @@ public:
 };
 
 int main() {
-	{
-		int switchTimes;
-		int a[10] = {4, 1, 9, 5, 2, 3, 8, 1, 0, 7};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
-	}
+	Timer t("bubble");
 
-	{
-		int switchTimes;
-		int a[10] = {9,8,7,6,5,4,3,2,1,0};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
-	}
-	{
-		int switchTimes;
-		int a[10] = {0,1,2,3,4,5,6,7,8,9};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
+	for (int i = 0; i < 500; i++) {
+		{
+			int switchTimes;
+			int a[10] = {4, 1, 9, 5, 2, 3, 8, 1, 0, 7};
+			Solution::sortArray(a, 10, switchTimes);
+		}
+
+		{
+			int switchTimes;
+			int a[10] = {9,8,7,6,5,4,3,2,1,0};
+			Solution::sortArray(a, 10, switchTimes);
+		}
+		{
+			int switchTimes;
+			int a[10] = {0,1,2,3,4,5,10,7,8,9};
+			Solution::sortArray(a, 10, switchTimes);
+		}
 	}
 }
 

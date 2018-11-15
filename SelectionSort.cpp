@@ -1,5 +1,7 @@
 
 #include "iostream"
+#include "timer.h"
+
 using namespace std;
 
 /*
@@ -37,30 +39,24 @@ public:
 };
 
 int main() {
-	{
-		int switchTimes;
-		int a[10] = {4, 1, 9, 5, 2, 3, 8, 1, 0, 7};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
-	}
+	Timer t("selection");
 
-	{
-		int switchTimes;
-		int a[10] = {9,8,7,6,5,4,3,2,1,0};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
-	}
-	{
-		int switchTimes;
-		int a[10] = {0,1,2,3,4,5,6,7,8,9};
-		Solution::printA(a, 10);
-		Solution::sortArray(a, 10, switchTimes);
-		Solution::printA(a, 10);	
-		cout << "switch times : " << switchTimes << "\n";
+	for (int i = 0; i < 500; i++) {
+		{
+			int switchTimes;
+			int a[10] = {4, 1, 9, 5, 2, 3, 8, 1, 0, 7};
+			Solution::sortArray(a, 10, switchTimes);
+		}
+		{
+			int switchTimes;
+			int a[10] = {9,8,7,6,5,4,3,2,1,0};
+			Solution::sortArray(a, 10, switchTimes);
+		}
+		{
+			int switchTimes;
+			int a[10] = {0,1,2,3,4,5,6,7,8,9};
+			Solution::sortArray(a, 10, switchTimes);
+		}
 	}
 }
 
