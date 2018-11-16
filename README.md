@@ -1,14 +1,12 @@
 Data Structure and Algorighm
 ====
 
-Complexity
----
+### Complexity
 * Asympototic time complexity
   * `O(1) < O(logn) < O(n) < O(n\*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
 * Asympototic space complexity
 
-Recursion
-----
+### Recursion
 *Issues:*
 * Invocation depth may cause stack overflow
   * set max depth
@@ -18,14 +16,12 @@ Recursion
 * Circle invocation
   * TBD
 
-Queue
----
+### Queue
 * Unlock Queue
 * Circle queue
 
-CAS & ABA
----
-### CAS(check and set/swap):
+### CAS & ABA
+#### CAS(check and set/swap):
 ```C
 bool cas(int* p, int oldv, int newv) {
     if (*p == oldv) {
@@ -50,26 +46,29 @@ EnQueue(x) {
             p = p->next;
     } while ( cas(p->next, NULL, item) == false );
 
-    cas (tail, oldp, item);
+    // set tail if it still points to oldp
+    // it could fail because other process/thread might has updated tail already
+    cas(tail, oldp, item);
 }
 ```
 
 * CAS has ABA problem
 
-### ABA
+#### ABA
 Solutions:
   1. Deferred reclamation to avoid memory reuse (delete and new again to same address)
     * garbage collection, like Java.
   2. Adding a "tag" or "stamp" to distinguish status of pointer/memory. 
      They would be different if tag/stamp is different, eventhough value is the same.
 
-Sorting
----
+
+SORTING
+----
 
 ### Bubble Sort
 * `T(n) = O(n^2)`
   * 满有序度 : `n*(n-1)/2`
-  * 逆序度 = 满有序度 - 有序度
+  * `逆序度 = 满有序度 - 有序度`
   * 逆序度 即 交换次数
 * Sorted in place _[space complexity O(1)]_
 * Stable _[means relative order of same values won't be changed]_
@@ -81,7 +80,7 @@ Sorted and unsorted parts, insert first unsorted to sorted part.
 * Sorted in place 
 * Stable
 
-## Shell's Sort
+### Shell's Sort
 **TODO**
 
 ### Selection Sort
@@ -123,6 +122,8 @@ Their `T(n) = O(n)` and no-comparison between data.
   * Multiple times
 
 
+BINARY SEARCHING
+----
 
 
 
