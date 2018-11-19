@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/*
+rm bs_sqrt.out ; g++ -std=c++14 binary_search_sqrt.cpp -o bs_sqrt.out && ./bs_sqrt.out
+*/
+
 double sqrt_bs(int v, int& loop) {
     static double precision = 0.0000001;
 

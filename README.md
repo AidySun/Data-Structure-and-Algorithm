@@ -1,6 +1,14 @@
 Data Structure and Algorighm
 ====
 
+### Coding Tips
+* `int m = (low + high) / 2;` has over flow issues, the best solution is:
+```CPP
+    int m = (high - low) / 2 + low;
+    // or 
+    int m = ((high - low) >> 1) + low;
+```
+
 ### Complexity
 * Asympototic time complexity
   * `O(1) < O(logn) < O(n) < O(n\*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
@@ -124,6 +132,15 @@ Their `T(n) = O(n)` and no-comparison between data.
 
 BINARY SEARCHING
 ----
+* `TC = O(logn)`
+  * `O(logn)` sometimes even be better than `O(1)`, e.g. N is very large.
+
+**Preconditions:**
+  * data is sorted
+  * array based
+    * large size/amount data may not be suitable, since large contiguous memory is required.
+  * data is not dynamic changed
+    * if it is dynamic, it either makes it ordered when changing data, or sort the data before search.
 
 
 
