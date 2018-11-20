@@ -2,7 +2,7 @@ Data Structure and Algorighm
 ====
 
 ### Coding Tips
-* `int m = (low + high) / 2;` has over flow issues, the best solution is:
+* `int m = (low + high) / 2;` has the overflow issue. Solutions:
 ```CPP
     int m = (high - low) / 2 + low;
     // or 
@@ -11,14 +11,14 @@ Data Structure and Algorighm
 
 ### Complexity
 * Asympototic time complexity
-  * `O(1) < O(logn) < O(n) < O(n\*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
+  * `O(1) < O(logn) < O(n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
 * Asympototic space complexity
 
 ### Recursion
 *Issues:*
 * Invocation depth may cause stack overflow
   * set max depth
-  * munally stack management, do not use system's stack
+  * munally stack management, do not use system's call stack
 * Repeated calculation (e.g. `fibonacci(4)` and `fibonacci(5)`)
   * cache calculated values
 * Circle invocation
@@ -29,6 +29,8 @@ Data Structure and Algorighm
 * Circle queue
 
 ### CAS & ABA
+CAS is used for lock-free implementation.
+
 #### CAS(check and set/swap):
 ```C
 bool cas(int* p, int oldv, int newv) {
@@ -92,10 +94,10 @@ Sorted and unsorted parts, insert first unsorted to sorted part.
 **TODO**
 
 ### Selection Sort
-Sorted and un-sorted parts, each loop selects smallest item from un-sorted and append to the end of sorted part.
+Sorted and un-sorted parts, each loop selects smallest item from un-sorted and ~append to~ switch with the end of sorted part.
 * Time complexity : `O(n^2)`
 * Sorted in place
-* Unstable
+* Unstable _[because of the switch]_
 
 ### Merge Sort
 Using recursion to split sorting items and sort them indenpendently, then merge those sorted items to be one.
@@ -142,6 +144,8 @@ BINARY SEARCHING
   * data is not dynamic changed
     * if it is dynamic, it either makes it ordered when changing data, or sort the data before search.
 
+  * Most problems with binary search can be replaced with Binary Tree and Hash Table.
+    * but the problems like finding 1st great or eaual value.
 
 
 

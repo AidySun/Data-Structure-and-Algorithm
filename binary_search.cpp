@@ -9,6 +9,8 @@ rm bs.out ; g++ -std=c++14 binary_search.cpp -o bs.out && ./bs.out
 */
 
 /* return index of v, -1 if not found
+
+Precondition: no ducplication
 */
 int bs_array_loop(int *a, int n, int v) {
     int l = 0, h = n-1;
