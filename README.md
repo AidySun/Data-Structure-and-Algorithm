@@ -119,7 +119,7 @@ Find a guard and put smaller to left, bigger to right (refer to `partition()` fu
   * pick multiple (more than 3) and select the middle one or average value
 
 ### Other
-Their `T(n) = O(n)` and no-comparison between data.
+They are `T(n) = O(n)` and no-comparison between data.
 
 * Bucket Sort (桶排序)
   * data can be splitted to some buckets
@@ -146,6 +146,53 @@ BINARY SEARCHING
 
   * Most problems with binary search can be replaced with Binary Tree and Hash Table.
     * but the problems like finding 1st great or eaual value.
+
+HASH TABLE
+---
+* Array-based - random access
+* Load Factor = (num of existed item) / (len of hash table)
+
+### Hash Function
+* Requriements
+  * generates a non-nagative integer
+  * if key1 == key2 then hash(key1) == hash(key2)
+  * if key1 != key2 then hash(key1) != hash(key2)
+
+#### Hash confliction
+  * **Open addressin**
+    * Linear probing (`O(n)`)
+      * 插入时 - 如果位置被占用，依次向后查找空闲位置
+      * 查找时 - 比较散列值位置的元素，若不相等，依次向后查找, 直到空闲位置
+        * 到空闲位置停止有数据丢失问题，可以将删除的数据标记为deleted，而不是真正删除
+    * Double hashing 双重散列
+      * a group of hash function is used, 对冲突的数据使用不同hash function
+    * Quadratic probing 二次探测
+      * 探测步长为二次方，e.g. hash(key)+0, hash(key)+1^2, hash(key)+2^2...
+  * **Chaining**
+    * conflicted items are stored in a linked chain in same hashed value
+
+HASHING
+---
+### Requirement
+* Input cannot be calculated from output
+* Input sensitive - tiny diff in input would cause huge diff in output
+* Low confliction
+* High performance
+
+### Usages
+1. 安全加密 Encryption 
+  * MD5 (Message-Digest Algorithm) - 128 bits, unsecury
+  * SHA (Secure Hash Algorithm)
+  * DES (Data Encryption Standard)
+  * AES (Advanced Encryption Standard)
+  * 对于存储的hash密码，为防止字典攻击，应该使用Salt盐
+2. 唯一标示 Uniformity 
+  * e.g. Image - 文件大，我们可以取摘要，如开头、中间、末尾各取100字节, 再对相同hash的数据做全量对比
+3. 数据校验
+4. 散列函数
+5. 负载均衡
+6. 数据分片
+7. 分布式存储
 
 
 
