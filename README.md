@@ -151,6 +151,7 @@ HASH TABLE
 ---
 * Array-based - random access
 * Load Factor = (num of existed item) / (len of hash table)
+  * default is 0.75 in Java
 
 ### Hash Function
 * Requriements
@@ -159,17 +160,21 @@ HASH TABLE
   * if key1 != key2 then hash(key1) != hash(key2)
 
 #### Hash confliction
-  * **Open addressin**
-    * Linear probing (`O(n)`)
-      * 插入时 - 如果位置被占用，依次向后查找空闲位置
-      * 查找时 - 比较散列值位置的元素，若不相等，依次向后查找, 直到空闲位置
-        * 到空闲位置停止有数据丢失问题，可以将删除的数据标记为deleted，而不是真正删除
-    * Double hashing 双重散列
-      * a group of hash function is used, 对冲突的数据使用不同hash function
-    * Quadratic probing 二次探测
-      * 探测步长为二次方，e.g. hash(key)+0, hash(key)+1^2, hash(key)+2^2...
-  * **Chaining**
-    * conflicted items are stored in a linked chain in same hashed value
+* **Open addressin**
+  * Linear probing (`O(n)`)
+    * 插入时 - 如果位置被占用，依次向后查找空闲位置
+    * 查找时 - 比较散列值位置的元素，若不相等，依次向后查找, 直到空闲位置
+      * 到空闲位置停止有数据丢失问题，可以将删除的数据标记为deleted，而不是真正删除
+  * Double hashing 双重散列
+    * a group of hash function is used, 对冲突的数据使用不同hash function
+  * Quadratic probing 二次探测
+    * 探测步长为二次方，e.g. hash(key)+0, hash(key)+1^2, hash(key)+2^2...
+* **Chaining**
+  * conflicted items are stored in a linked chain in same hashed value
+
+#### Dynamic Expansion
+动态扩容后（2倍 in Java），数据如果一次性迁移会有performance isssue。可以把数据迁移分担到每次数据操作。
+E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，想从新表查找，不存在再查找旧表。
 
 HASHING
 ---
@@ -181,7 +186,7 @@ HASHING
 
 ### Usages
 1. 安全加密 Encryption 
-  * MD5 (Message-Digest Algorithm) - 128 bits, unsecury
+  * MD5. (MessagebDigest Algorithm) - 128 bits, unsecury
   * SHA (Secure Hash Algorithm)
   * DES (Data Encryption Standard)
   * AES (Advanced Encryption Standard)
@@ -191,8 +196,14 @@ HASHING
 3. 数据校验
 4. 散列函数
 5. 负载均衡
+  * 对于session sticky，即长连接，可以对IP或session ID做hashing，然后与server数量取模
 6. 数据分片
+  * MapReduce的基本设计思想
+  * 取一条数据(e.g. 日志中的单词)做hash，与server num取模，相同数据会分配到同一server
 7. 分布式存储
+Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
+* Consistent Hanshing - 一致性Hash (每次添加或删除cache node只有小范围影响)
+  * TBD
 
 
 
