@@ -1,5 +1,7 @@
 Data Structure and Algorighm
 ====
+### Overview
+<image src="images/MindMap.jpg" height="360" />
 
 ### Coding Tips
 * `int m = (low + high) / 2;` has the overflow issue. Solutions:
@@ -10,9 +12,10 @@ Data Structure and Algorighm
 ```
 
 ### Complexity
+* Asympototic space complexity
 * Asympototic time complexity
   * `O(1) < O(logn) < O(n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
-* Asympototic space complexity
+  <img src="images/time complexity.jpg" height="360" />
 
 ### Recursion
 *Issues:*
