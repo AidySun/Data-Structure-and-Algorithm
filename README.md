@@ -208,8 +208,32 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 * Consistent Hanshing - 一致性Hash (每次添加或删除cache node只有小范围影响)
   * TBD
 
+BINARY TREE
+----
+* 表示方式
+  * 链式 : 最常用
+  * 数组 ：根节点从1开始，对于第k个节点，2k为其左子节点，2k+1为右子节点
+* 二叉树遍历TC : `O(n)`
+* 遍历方式
+  * preOrder - `self -> left -> right`
+  * inOrder - `left -> self -> right`
+  * postOrder - `left -> right -> self`
+  * 按层
+* Complete Binary Tree 完全二叉树
+  * for a BT with k layers, 1~k-1 layers have full nodes, nodes in layer k are continuous from left to right.
+  * 适合数组存储
 
+## 二叉查找树
+左子节点比自己小，右子节点比自己大
+* 删除
+  * 标记为已删除，不真正删除
+  * 有两个节点时，从右子树找最小值来替换
+* 插入时对于相同值
+  * 存在右子节点
+  * 存在同一节点（链式）
 
+## 平衡二叉树、红黑树
+## 递归树
 
 
 
