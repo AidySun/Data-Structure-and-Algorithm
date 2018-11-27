@@ -223,7 +223,7 @@ BINARY TREE
   * for a BT with k layers, 1~k-1 layers have full nodes, nodes in layer k are continuous from left to right.
   * 适合数组存储
 
-## 二叉查找树
+## Binary Search Tree 二叉查找树
 左子节点比自己小，右子节点比自己大
 * 删除
   * 标记为已删除，不真正删除
@@ -232,7 +232,15 @@ BINARY TREE
   * 存在右子节点
   * 存在同一节点（链式）
 
+### 二叉查找树 V.S. Hash Table
+* Data in hash table is not sorted, sorting is needed when required
+* Hash table doesn't have stable performance
+  * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
+* Hash table is more complex than binary search tree
+  * Because hash table needs time for hash function, handle hash conflication, dynamic expansion and shrinkage.
+
 ## 平衡二叉树、红黑树
+
 ## 递归树
 
 
