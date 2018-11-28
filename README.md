@@ -1,5 +1,7 @@
-# Data Structure and Algorithm
+Data Structure and Algorithm
+====
 ### Overview
+<image src="images/MindMap.jpg" height="360" />
 
 ### Coding Tips
 * `int m = (low + high) / 2;` has the overflow issue. Solutions:
@@ -13,9 +15,10 @@
 * Asymptotic space complexity
 * Asymptotic time complexity
   * `O(1) < O(logn) < O(n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
+  <img src="images/time complexity.jpg" height="360" />
 
 ### Recursion
-_Issues:_
+*Issues:*
 * Invocation depth may cause stack overflow
   * set max depth
   * manually stack management, do not use system's call stack
@@ -67,12 +70,14 @@ EnQueue(x) {
 
 #### ABA
 Solutions:
-1. Deferred reclamation to avoid memory reuse (delete and new again to same address)
-* garbage collection, like Java.
-2. Adding a "tag" or "stamp" to distinguish status of pointer/memory.
-They would be different if tag/stamp is different, even though value is the same.
+  1. Deferred reclamation to avoid memory reuse (delete and new again to same address)
+    * garbage collection, like Java.
+  2. Adding a "tag" or "stamp" to distinguish status of pointer/memory. 
+     They would be different if tag/stamp is different, eventhough value is the same.
 
-## SORTING
+
+SORTING
+----
 
 ### Bubble Sort
 * `T(n) = O(n^2)`
@@ -86,7 +91,7 @@ They would be different if tag/stamp is different, even though value is the same
 ### Insertion Sort
 Sorted and unsorted parts, insert first unsorted to sorted part.
 * Time complexity : `O(n^2)`
-* Sorted in place
+* Sorted in place 
 * Stable
 
 ### Shell's Sort
@@ -101,8 +106,8 @@ Sorted and un-sorted parts, each loop selects smallest item from un-sorted and ~
 ### Merge Sort
 Using recursion to split sorting items and sort them independently, then merge those sorted items to be one.
 * Time complexity : `O(n*logn)` _[stable TC, no matter best, worst]_
-* Space complexity: `O(n)`
-  * /[occurred in `merge()`, no more than n]/
+* Space complexity: `O(n)` 
+  * _[occurred in `merge()`, no more than n]_
 * Stable sorting
 * **NOT** in-place _[memory required]_
 
@@ -121,7 +126,7 @@ Find a guard and put smaller to left, bigger to right (refer to `partition()` fu
 They are `T(n) = O(n)` and no-comparison between data.
 
 * Bucket Sort (桶排序)
-  * data can be spitted to some buckets
+  * data can be spited to some buckets
   * suitable for data from disk
 * Counting Sort
   * specific bucket sort, put same value in one bucket
@@ -130,33 +135,36 @@ They are `T(n) = O(n)` and no-comparison between data.
   * Using bucket or counting sorting
   * Multiple times
 
-## BINARY SEARCHING
+
+BINARY SEARCHING
+----
 * `TC = O(logn)`
   * `O(logn)` sometimes even be better than `O(1)`, e.g. N is very large.
 
 **Preconditions:**
-* data is sorted
-* array based
-  * large size/amount data may not be suitable, since large contiguous memory is required.
-* data is not dynamic changed
-  * if it is dynamic, it either makes it ordered when changing data, or sort the data before search.
+  * data is sorted
+  * array based
+    * large size/amount data may not be suitable, since large contiguous memory is required.
+  * data is not dynamic changed
+    * if it is dynamic, it either makes it ordered when changing data, or sort the data before search.
 
-* Most problems with binary search can be replaced with Binary Tree and Hash Table.
-  * but the problems like finding 1st great or equal value.
+  * Most problems with binary search can be replaced with Binary Tree and Hash Table.
+    * but the problems like finding 1st great or equal value.
 
-## HASH TABLE
+HASH TABLE
+---
 * Array-based - random access
-* Load Factor = (num of existed item) / (length of hash table)
+* Load Factor = (num of existed item) / (len of hash table)
   * default is 0.75 in Java
 
 ### Hash Function
-* Requirements
+* Requriements
   * generates a non-negative integer
   * if key1 == key2 then hash(key1) == hash(key2)
   * if key1 != key2 then hash(key1) != hash(key2)
 
-#### Hash confliction
-* **Open addressing**
+#### Hash conflict
+* **Open addressin**
   * Linear probing (`O(n)`)
     * 插入时 - 如果位置被占用，依次向后查找空闲位置
     * 查找时 - 比较散列值位置的元素，若不相等，依次向后查找, 直到空闲位置
@@ -172,7 +180,8 @@ They are `T(n) = O(n)` and no-comparison between data.
 动态扩容后（2倍 in Java），数据如果一次性迁移会有performance isssue。可以把数据迁移分担到每次数据操作。
 E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，想从新表查找，不存在再查找旧表。
 
-## HASHING
+HASHING
+---
 ### Requirement
 * Input cannot be calculated from output
 * Input sensitive - tiny diff in input would cause huge diff in output
@@ -180,27 +189,28 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 * High performance
 
 ### Usages
-1. 安全加密 Encryption
-* MD5. (Messaged Digest Algorithm) - 128 bits, unsecured
-* SHA (Secure Hash Algorithm)
-* DES (Data Encryption Standard)
-* AES (Advanced Encryption Standard)
-* 对于存储的hash密码，为防止字典攻击，应该使用Salt盐
-2. 唯一标示 Uniformity
-* e.g. Image - 文件大，我们可以取摘要，如开头、中间、末尾各取100字节, 再对相同hash的数据做全量对比
+1. 安全加密 Encryption 
+  * MD5. (MessagebDigest Algorithm) - 128 bits, unsecured
+  * SHA (Secure Hash Algorithm)
+  * DES (Data Encryption Standard)
+  * AES (Advanced Encryption Standard)
+  * 对于存储的hash密码，为防止字典攻击，应该使用Salt盐
+2. 唯一标示 Uniformity 
+  * e.g. Image - 文件大，我们可以取摘要，如开头、中间、末尾各取100字节, 再对相同hash的数据做全量对比
 3. 数据校验
 4. 散列函数
 5. 负载均衡
-* 对于session sticky，即长连接，可以对IP或session ID做hashing，然后与server数量取模
+  * 对于session sticky，即长连接，可以对IP或session ID做hashing，然后与server数量取模
 6. 数据分片
-* MapReduce的基本设计思想
-* 取一条数据(e.g. 日志中的单词)做hash，与server num取模，相同数据会分配到同一server
+  * MapReduce的基本设计思想
+  * 取一条数据(e.g. 日志中的单词)做hash，与server num取模，相同数据会分配到同一server
 7. 分布式存储
 Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
-* Consistent Hashing - 一致性Hash (每次添加或删除cache node只有小范围影响)
+* Consistent Hanshing - 一致性Hash (每次添加或删除cache node只有小范围影响)
   * TBD
 
-## BINARY TREE
+BINARY TREE
+----
 * 表示方式
   * 链式 : 最常用
   * 数组 ：根节点从1开始，对于第k个节点，2k为其左子节点，2k+1为右子节点
@@ -211,11 +221,10 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
   * postOrder - `left -> right -> self`
   * 按层
 * Complete Binary Tree 完全二叉树
-  * for a BT with k layers, 1 to k-1 layers have full nodes, nodes in layer k are continuous from left to right.
-    * 适合数组存储 
+  * for a BT with k layers, 1~k-1 layers have full nodes, nodes in layer k are continuous from left to right.
+  * 适合数组存储
 
 ## Binary Search Tree 二叉查找树
-
 左子节点比自己小，右子节点比自己大
 * TC : `O(logn)` _[same with the height of tree]_
 * 删除
@@ -228,26 +237,19 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 ### 二叉查找树 V.S. Hash Table
 * Data in hash table is not sorted, sorting is needed when required
 * Hash table doesn't have stable performance
-  * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`.
+  * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
 * Hash table is more complex than binary search tree
   * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
 
 ## Balance Binary Tree 平衡二叉树
-* definition is 任意节点左右子树高度相差不超过1
-  * 实际应用中可能会超过1
-* 满二叉树、完全二叉树 都是平衡二叉树
-* 非完全二叉树也可以是平衡二叉树 (右子节点非空，左子节点空) 
+* 任何节点左右子树高度差不大于1
+  * 实际应用可能会超过1， 相对平衡
+* 满二叉树、完全二叉树为平衡二叉树，非完全二叉树有可能是平衡二叉树 (左子树为空，右子树非空kkkkk)
 * AVL Tree
 
-## Reg-Black Tree 红黑树
+## Red-black Tree 红黑树
 
 ## 递归树
-
-
-
-
-
-
 
 
 
