@@ -34,7 +34,9 @@ public:
                     return;
                 }
                 p = p->r;
-            } else {
+            } else { 
+                if (n->val < p->val) {
+                }
                 p = p->l;
             }
         }

@@ -240,16 +240,23 @@ BINARY TREE
   * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
 * Hash table is more complex than binary search tree
   * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
+* 二叉查找树的高度可能超过logn，而导致时间复杂度退化(最坏会退化成链表)。平衡二叉查找树可解决此问题。
 
-## Balance Binary Tree 平衡二叉树
+## Balance Binary Search Tree 平衡二叉查找树
 * 任何节点左右子树高度差不大于1
   * 实际应用可能会超过1， 相对平衡
-* 满二叉树、完全二叉树为平衡二叉树，非完全二叉树有可能是平衡二叉树 (左子树为空，右子树非空kkkkk)
+* 满二叉树、完全二叉树为平衡二叉树，非完全二叉树有可能是平衡二叉树 (左子树为空，右子树非空)
 * AVL Tree
+* Red-black tree 最为著名
 
-## Red-black Tree 红黑树
+### Red-black Tree 红黑树
+* High performance to search, insert and delete
+* Height of RBT is about 2 times of logn
+* Skip List could be an alternateness of RBT
+  * Redis uses Skip List as sorted set
 
 ## 递归树
+* 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
 
 
