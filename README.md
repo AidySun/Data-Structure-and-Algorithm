@@ -242,6 +242,21 @@ BINARY TREE
   * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
 * 二叉查找树的高度可能超过logn，而导致时间复杂度退化(最坏会退化成链表)。平衡二叉查找树可解决此问题。
 
+### Sorted Array v.s. Hash Table v.s. Tree
+_learned from MySQL lensen_
+* Hash Table
+  * Good for **fixed value data**
+  * Not good for sorted data
+  * Not good for range query
+* Sorted Array
+  * good for sorted data
+  * good for range query
+  * not good for insertion (dynamic data)
+* Tree
+  * good for dynamic data
+  * good for range query
+  * goot for sorted data
+
 ## Balance Binary Search Tree 平衡二叉查找树
 * 任何节点左右子树高度差不大于1
   * 实际应用可能会超过1， 相对平衡
@@ -258,11 +273,27 @@ BINARY TREE
 ## 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
-_耐得住寂寞 * 才能守得住繁华_
 
+HEAP
+----
+Heap is complete binary tree.
+* Heapity
+  * Top to Bottom
+    * starts from root, find largest child greater than self, and switch, repeat
+  * Bottom to Top
+    * switch with parent if it is greater than self, repeat
 
+* Insertion
+  * insert to end first
+  * bottom to top heapity
 
-
+* Delete 
+  * swith root with last item
+  * delete last
+  * to to bottom heapity
+  
+* Sort
+  * 
 
 
 
