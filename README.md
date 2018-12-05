@@ -286,7 +286,7 @@ _learned from MySQL lensen_
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
 
-HEAP
+HEAP SORT
 ----
 Heap is complete binary tree.
 * Heapity
@@ -305,7 +305,18 @@ Heap is complete binary tree.
   * to to bottom heapity
   
 * Sort
-  * 
+  1. create heap
+      * `O(n)`
+      1. via insertion, top to bottom
+      1. bottom to top, from `n/2` to `1`, `n/2 + 1` to `n` are leaves nodes, needn't sorting
+     * after creation, the root is biggest (if big heading) or smallest (if small heading)
+  2. sort 
+      * `O(logn)`
+      * like deletion, from top to bottom
+      1. switch root with last,
+      2. heapity new root
+      3. repeat
+
 
 
 
