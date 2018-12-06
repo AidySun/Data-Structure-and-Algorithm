@@ -79,7 +79,7 @@ Solutions:
 SORTING
 ----
 
-### Bubble Sort
+### [Bubble Sort](./src/BubbleSort.cpp)
 * `T(n) = O(n^2)`
   * 满有序度 : `n*(n-1)/2`
   * `逆序度 = 满有序度 - 有序度`
@@ -88,7 +88,7 @@ SORTING
 * Stable _[means relative order of same values won't be changed]_
   * usage : sorted by more than two attributes _[e.g. orders sorted by time and price]_
 
-### Insertion Sort
+### [Insertion Sort](./src/InsertionSort.cpp)
 Sorted and unsorted parts, insert first unsorted to sorted part.
 * Time complexity : `O(n^2)`
 * Sorted in place 
@@ -97,13 +97,13 @@ Sorted and unsorted parts, insert first unsorted to sorted part.
 ### Shell's Sort
 **TODO**
 
-### Selection Sort
+### [Selection Sort](./src/SelectionSort.cpp)
 Sorted and un-sorted parts, each loop selects smallest item from un-sorted and ~append to~ switch with the end of sorted part.
 * Time complexity : `O(n^2)`
 * Sorted in place
 * Unstable _[because of the switch]_
 
-### Merge Sort
+### [Merge Sort](./src/MergeSort.cpp)
 Using recursion to split sorting items and sort them independently, then merge those sorted items to be one.
 * Time complexity : `O(n*logn)` _[stable TC, no matter best, worst]_
 * Space complexity: `O(n)` 
@@ -111,7 +111,7 @@ Using recursion to split sorting items and sort them independently, then merge t
 * Stable sorting
 * **NOT** in-place _[memory required]_
 
-### Quick Sort
+### [Quick Sort](./src/QuickSort.cpp)
 Find a guard and put smaller to left, bigger to right (refer to `partition()` function). Recursion.
 * Time complexity : `O(n*logn)`
   * worst `T(n) = O(n^2)` _[when guard cannot split list properly]_
@@ -136,7 +136,7 @@ They are `T(n) = O(n)` and no-comparison between data.
   * Multiple times
 
 
-BINARY SEARCHING
+[BINARY SEARCHING](./src/binary_search.cpp)
 ----
 * `TC = O(logn)`
   * `O(logn)` sometimes even be better than `O(1)`, e.g. N is very large.
@@ -150,6 +150,8 @@ BINARY SEARCHING
 
   * Most problems with binary search can be replaced with Binary Tree and Hash Table.
     * but the problems like finding 1st great or equal value.
+
+[Homework: `sqrt()` using binary search](./src/binary_search_sqrt.cpp)
 
 HASH TABLE
 ---
@@ -285,12 +287,11 @@ _learned from MySQL lensen_
 ## 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
-HEAP SORTING
+[HEAP SORTING](./src/HeapSort.cpp)
 ----
 * TC = `O(nlogn)`
 * Sorted in place
 * Unstable
-* [code](./src/HeapSort.cpp)
 
 1. Build heap `O(n)`
   * bottom to top- insert from begin to end
