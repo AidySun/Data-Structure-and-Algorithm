@@ -285,39 +285,48 @@ _learned from MySQL lensen_
 ## 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
-
-HEAP SORT
+HEAP SORTING
 ----
-Heap is complete binary tree.
-* Heapity
-  * Top to Bottom
-    * starts from root, find largest child greater than self, and switch, repeat
-  * Bottom to Top
-    * switch with parent if it is greater than self, repeat
+* TC = `O(nlogn)`
+* Sorted in place
+* Unstable
+* [code](./src/HeapSort.cpp)
 
-* Insertion
-  * insert to end first
-  * bottom to top heapity
-
-* Delete 
-  * swith root with last item
-  * delete last
-  * to to bottom heapity
+1. Build heap `O(n)`
+  * bottom to top- insert from begin to end
+  * top to bottom - from `n/2` to `1`
   
-* Sort
-  1. create heap
-      * `O(n)`
-      1. via insertion, top to bottom
-      1. bottom to top, from `n/2` to `1`, `n/2 + 1` to `n` are leaves nodes, needn't sorting
-     * after creation, the root is biggest (if big heading) or smallest (if small heading)
-  2. sort 
-      * `O(logn)`
-      * like deletion, from top to bottom
-      1. switch root with last,
-      2. heapity new root
-      3. repeat
+2. Sorting `O(logn)`
+   * Top to bottom- same as deletion
 
+> Q: Why quick sorting is more popular than heap sorting?
+> A: 1) quick sort access data in order, heap sort is not. Not good for CPU caching.
+>    2) heap sort has more switch times. Sorted data became unsorted after heap creation.
 
+### Heap
+* Heap is complete binary tree.
+* Value of a node is >= (big heading) or <= (small heading) than its children.
+
+### Heapity
+`O(logn)`
+* Top to Bottom
+  * starts from root, find largest child greater than self, and switch, repeat
+* Bottom to Top
+  * switch with parent if it is greater than self, repeat
+
+#### Heap deletion 
+1. Switch node with the last element
+2. Delete last
+3. Heapity node from top to bottom
+
+* Strait forward way
+1. delete node
+2. Find largest/smallest child and move to position
+The problem: hole in the tree
+
+#### Heap Insertion 
+1. Append new item to end
+2. Heapity node from bottom to top
 
 
 
