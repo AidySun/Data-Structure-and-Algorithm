@@ -3,7 +3,7 @@ Data Structure and Algorithm
 ### Overview
 <image src="images/MindMap.jpg" height="360" />
 
-### Coding Tips
+### Coding Tips :beers:
 * `int m = (low + high) / 2;` has the overflow issue. Solutions:
 ```CPP
     int m = (high - low) / 2 + low;
@@ -247,29 +247,7 @@ BINARY TREE
 * 插入时对于相同值
   * 存在右子节点
   * 存在同一节点（链式）
-
-### 二叉查找树 V.S. Hash Table
-* Data in hash table is not sorted, sorting is needed when required
-* Hash table doesn't have stable performance
-  * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
-* Hash table is more complex than binary search tree
-  * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
 * 二叉查找树的高度可能超过logn，而导致时间复杂度退化(最坏会退化成链表)。平衡二叉查找树可解决此问题。
-
-### Sorted Array v.s. Hash Table v.s. Tree
-_learned from MySQL lensen_
-* Hash Table
-  * Good for **fixed value data**
-  * Not good for sorted data
-  * Not good for range query
-* Sorted Array
-  * good for sorted data
-  * good for range query
-  * not good for insertion (dynamic data)
-* Tree
-  * good for dynamic data
-  * good for range query
-  * goot for sorted data
 
 ## Balance Binary Search Tree 平衡二叉查找树
 * 任何节点左右子树高度差不大于1
@@ -286,6 +264,25 @@ _learned from MySQL lensen_
 
 ## 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
+
+### Sorted Array v.s. Hash Table v.s. Tree :beers:
+_learned from MySQL lensen_
+> * Hash Table
+>   * Good for **fixed value data**
+>   * Not good for sorted data
+>   * Not good for range query
+>   * Hash table doesn't have stable performance
+>     * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
+>   * Hash table is more complex than binary search tree
+>     * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
+> * Sorted Array
+>   * good for sorted data
+>   * good for range query
+>   * not good for insertion (dynamic data)
+> * Tree
+>   * good for dynamic data
+>   * good for range query
+>   * goot for sorted data
 
 [HEAP SORTING](./src/HeapSort.cpp)
 ----
@@ -329,7 +326,12 @@ The problem: hole in the tree
 1. Append new item to end
 2. Heapity node from bottom to top
 
-
+#### Heap Usage
+* Top `k` data
+* `k%` value (e.g. middle value of a number sequence)
+  * two heap, one stores `k% * n` using big heading, and the other stores `(1-k%) * n` with small heading
+  * new value compaires with two root nodes to deceide which heap to insert
+  * balance two heap after insert/delete
 
 
 
