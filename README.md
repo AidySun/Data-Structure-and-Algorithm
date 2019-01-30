@@ -344,6 +344,58 @@ The problem: hole in the tree
   * new value compaires with two root nodes to deceide which heap to insert
   * balance two heap after insert/delete
 
+GRAPH
+----
+* Consistent of vertext and edge.
+  * Directed graph - degree _(number of edges)_
+  * Undirected graph - in-degree / out-degree
+  * Weighted graph - each edge has its weight
+
+### How to strote a graph
+1. Adjacency Matrix 
+    * Two degree arrays
+    * Pros
+      * Simple, directly
+      * easy for matrix-based calculation
+    * Cons
+       * waste space
+         * especially for Sparse Matrix (稀疏矩阵)
+2. Adjancency List
+    * Hash table with linked list
+    * Less space than Adjacency Matrix but more time
+      * Balance Binary Tree or Red-black Tree instead of linked list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
