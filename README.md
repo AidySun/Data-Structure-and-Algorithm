@@ -11,8 +11,8 @@ Data Structure and Algorithm
 - [SKIP LIST](#skip-list)
 - [TREE](#tree)
 - [BINARY TREE](#binary-tree)
-- [HEAP SORTING](#heap-sorting)
 - [HEAP](#heap)
+- [HEAP SORTING](#heap-sorting)
 - [GRAPH](#graph)
 
 <!-- /MarkdownTOC -->
@@ -289,10 +289,11 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 * AVL Tree
 * Red-black tree 最为著名
 
-### Red-black Tree 红黑树
+### Red-black Tree 
 * High performance to search, insert and delete
-* Height of RBT is about 2 times of logn
+* Height of RBT is about `2 * logn`
 * Skip List could be an alternateness of RBT
+  * Skip list has easier implementation than RBT
   * Redis uses Skip List as sorted set
 
 ### 递归树
@@ -319,47 +320,35 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 >   * good for range query
 >   * good for sorted data
 
-# [HEAP SORTING](./src/HeapSort.cpp)
 
-* TC = `O(nlogn)`
-* Sorted in place
-* Unstable
+# [HEAP](./src/HeapSort.cpp)
 
-1. Build heap `O(n)`
-  * bottom to top- insert from begin to end
-  * top to bottom - from `n/2` to `1`
-  
-2. Sorting `O(logn)`
-   * Top to bottom- same as deletion
-
-> Q: Why quick sorting is more popular than heap sorting?
-> A: 1) quick sort access data in order, heap sort is not. Not good for CPU caching.
->    2) heap sort has more switch times. Sorted data became unsorted after heap creation.
-
-## HEAP
+### HEAP
 * Heap is complete binary tree.
 * Value of a node is >= (big heading) or <= (small heading) than its children.
+* complete binary tree is suitable to be stored in array
 
-### Heapity
+### Storage
+* The root index starts from `1`.
+* For the node with index `i`, its left child index would be `2 * i`, and right child is `2 * i + 1`
+* In array, the storage starts from 1 as well. That mean the index 0 in array is not used.
+
+### Heapify
 `O(logn)`
 * Top to Bottom
   * starts from root, find largest child greater than self, and switch, repeat
 * Bottom to Top
   * switch with parent if it is greater than self, repeat
 
-#### Heap deletion 
+#### Heap Deletion 
+0. Delete the node from tree directly would bring *hole* to the tree, following approach would be better:
 1. Switch node with the last element
 2. Delete last
-3. Heapity node from top to bottom
-
-* Strait forward way
-1. delete node
-2. Find largest/smallest child and move to position
-The problem: hole in the tree
+3. Heapify node from top to bottom
 
 #### Heap Insertion 
 1. Append new item to end
-2. Heapity node from bottom to top
+2. Heapify node from bottom to top
 
 #### Heap Usage
 * Top `k` data
@@ -367,6 +356,26 @@ The problem: hole in the tree
   * two heap, one stores `k% * n` using big heading, and the other stores `(1-k%) * n` with small heading
   * new value compaires with two root nodes to deceide which heap to insert
   * balance two heap after insert/delete
+
+## HEAP SORTING
+* TC = `O(n*logn)`
+* Sorted in place
+* Unstable
+
+1. Build heap `O(n)`
+  * Parse data from `1 to n` (begin to end). Insert each data. 
+  * Parse data from `n/2 to 1`, heapify each node from top to bottom.
+    * because, for a **complete binary tree**, data `n/2+1 to n` are leaf nodes at the beginning.
+    * and leaf nodes do NOT to heapify, since they would be heapified when heapifying nodes from `n/2 to 1`
+  
+2. Sorting `O(n*logn)`
+   * Top to bottom- same as deletion
+
+> Q: Why quick sorting is more popular than heap sorting?
+> A: 1) quick sort access data in order, heap sort is not. Not good for CPU caching.
+>    2) heap sort has more switch times. Sorted data became unsorted after heap creation.
+
+
 
 # GRAPH
 
