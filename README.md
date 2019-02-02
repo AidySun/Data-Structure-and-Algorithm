@@ -1,6 +1,26 @@
 Data Structure and Algorithm
 ====
-### Overview
+
+<!-- MarkdownTOC levels="1,2" autolink="true" -->
+
+- [OVERVIEW](#overview)
+- [SORTING](#sorting)
+- [BINARY SEARCHING](#binary-searching)
+- [HASH TABLE](#hash-table)
+- [HASHING](#hashing)
+- [SKIP LIST](#skip-list)
+- [TREE](#tree)
+- [BINARY TREE](#binary-tree)
+- [HEAP SORTING](#heap-sorting)
+- [HEAP](#heap)
+- [GRAPH](#graph)
+
+<!-- /MarkdownTOC -->
+
+
+
+## OVERVIEW
+
 <image src="images/MindMap.jpg" height="360" />
 
 ### Coding Tips :beers:
@@ -76,8 +96,8 @@ Solutions:
      They would be different if tag/stamp is different, eventhough value is the same.
 
 
-SORTING
-----
+# SORTING
+
 
 ### [Bubble Sort](./src/BubbleSort.cpp)
 * `T(n) = O(n^2)`
@@ -145,8 +165,8 @@ They are `T(n) = O(n)` and no-comparison between data.
     * sort in Java is implemented with [heap sort](#heap-sort)
 
 
-[BINARY SEARCHING](./src/binary_search.cpp)
-----
+# [BINARY SEARCHING](./src/binary_search.cpp)
+
 * `TC = O(logn)`
   * `O(logn)` sometimes even be better than `O(1)`, e.g. N is very large.
 
@@ -162,8 +182,8 @@ They are `T(n) = O(n)` and no-comparison between data.
 
 [Homework: `sqrt()` using binary search](./src/binary_search_sqrt.cpp)
 
-HASH TABLE
----
+# HASH TABLE
+
 * Array-based - random access
 * Load Factor = (num of existed item) / (len of hash table)
   * default is 0.75 in Java
@@ -191,8 +211,8 @@ HASH TABLE
 动态扩容后（2倍 in Java），数据如果一次性迁移会有performance isssue。可以把数据迁移分担到每次数据操作。
 E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，想从新表查找，不存在再查找旧表。
 
-HASHING
----
+## HASHING
+
 ### Requirement
 * Input cannot be calculated from output
 * Input sensitive - tiny diff in input would cause huge diff in output
@@ -220,8 +240,8 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 * Consistent Hanshing - 一致性Hash (每次添加或删除cache node只有小范围影响)
   * TBD
 
-SKIP LIST
-----
+# SKIP LIST
+
 * TC: `O(logn)`
   * **for search, insert and delete**
 * skip list uses Random Function to keeps its balance
@@ -234,8 +254,10 @@ SKIP LIST
   * skip list is more flex (by changing its index strategy)
   * RBT is earlier than SL, many `Map` type is implemented with RBT
 
-BINARY TREE
-----
+# TREE
+
+## BINARY TREE
+
 * 表示方式
   * 链式 : 最常用
   * 数组 ：根节点从1开始，对于第k个节点，2k为其左子节点，2k+1为右子节点
@@ -249,8 +271,8 @@ BINARY TREE
   * for a BT with k layers, 1~k-1 layers have full nodes, nodes in layer k are continuous from left to right.
   * 适合数组存储
 
-## Binary Search Tree 二叉查找树
-左子节点比自己小，右子节点比自己大
+### Binary Search Tree (BST)
+* Any node is larger than ALL its left children, and smaller than ALL its right children. 
 * TC : `O(logn)` _[same with the height of tree]_
 * 删除
   * 标记为已删除，不真正删除
@@ -260,7 +282,7 @@ BINARY TREE
   * 存在同一节点（链式）
 * 二叉查找树的高度可能超过logn，而导致时间复杂度退化(最坏会退化成链表)。平衡二叉查找树可解决此问题。
 
-## Balance Binary Search Tree 平衡二叉查找树
+### Balance Binary Search Tree 平衡二叉查找树
 * 任何节点左右子树高度差不大于1
   * 实际应用可能会超过1， 相对平衡
 * 满二叉树、完全二叉树为平衡二叉树，非完全二叉树有可能是平衡二叉树 (左子树为空，右子树非空)
@@ -273,12 +295,17 @@ BINARY TREE
 * Skip List could be an alternateness of RBT
   * Redis uses Skip List as sorted set
 
-## 递归树
+### 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
 ### Sorted Array v.s. Hash Table v.s. Tree :beers:
-_learned from MySQL lensen_
-> * Hash Table
+
+* Sorted Array
+>   * good for sorted data
+>   * good for range query
+>   * not good for insertion (dynamic data)
+
+* Hash Table
 >   * Good for **fixed value data**
 >   * Not good for sorted data
 >   * Not good for range query
@@ -286,17 +313,14 @@ _learned from MySQL lensen_
 >     * Although hash table has time complexity `O(1)`, it may be slower than binary searching tree's `O(logn)`. 
 >   * Hash table is more complex than binary search tree
 >     * Because hash table needs time for hash function, handle hash conflict, dynamic expansion and shrinkage.
-> * Sorted Array
->   * good for sorted data
->   * good for range query
->   * not good for insertion (dynamic data)
-> * Tree
+
+* Tree
 >   * good for dynamic data
 >   * good for range query
->   * goot for sorted data
+>   * good for sorted data
 
-[HEAP SORTING](./src/HeapSort.cpp)
-----
+# [HEAP SORTING](./src/HeapSort.cpp)
+
 * TC = `O(nlogn)`
 * Sorted in place
 * Unstable
@@ -312,7 +336,7 @@ _learned from MySQL lensen_
 > A: 1) quick sort access data in order, heap sort is not. Not good for CPU caching.
 >    2) heap sort has more switch times. Sorted data became unsorted after heap creation.
 
-### Heap
+## HEAP
 * Heap is complete binary tree.
 * Value of a node is >= (big heading) or <= (small heading) than its children.
 
@@ -344,8 +368,8 @@ The problem: hole in the tree
   * new value compaires with two root nodes to deceide which heap to insert
   * balance two heap after insert/delete
 
-GRAPH
-----
+# GRAPH
+
 * Consistent of vertext and edge.
   * Directed graph - degree _(number of edges)_
   * Undirected graph - in-degree / out-degree
