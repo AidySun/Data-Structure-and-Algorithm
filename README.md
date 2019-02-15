@@ -323,6 +323,8 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 
 # [HEAP](./src/HeapSort.cpp)
 
+* [BinaryHeap.cpp](https://gist.github.com/AidySun/66c92ac88455288fa629a844413c598e)
+
 ### HEAP
 * Heap is complete binary tree.
 * Value of a node is >= (big heading) or <= (small heading) than its children.
@@ -374,7 +376,6 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 > Q: Why quick sorting is more popular than heap sorting?
 > A: 1) quick sort access data in order, heap sort is not. Not good for CPU caching.
 >    2) heap sort has more switch times. Sorted data became unsorted after heap creation.
-
 
 
 # GRAPH
