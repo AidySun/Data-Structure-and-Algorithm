@@ -14,6 +14,8 @@ Data Structure and Algorithm
 - [HEAP](#heap)
 - [HEAP SORTING](#heap-sorting)
 - [GRAPH](#graph)
+- [BIT MAP](#bit-map)
+- [Bloom Filter](#bloom-filter)
 
 <!-- /MarkdownTOC -->
 
@@ -36,6 +38,11 @@ Data Structure and Algorithm
 * Asymptotic time complexity
   * `O(1) < O(logn) < O(n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
   <img src="images/time complexity.jpg" height="360" />
+
+> 时间复杂度并不能完全代表代码的执行时间。
+> 大 O 时间复杂度表示法，会忽略掉常数、系数和低阶，并且统计的对象是语句的频度。
+> 不同的语句，执行时间也是不同的。时间复杂度只是表示执行时间随数据规模的变化趋势，
+> 并不能度量在特定的数据规模下，代码执行时间的多少。
 
 ### Recursion
 *Issues:*
@@ -400,7 +407,11 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
       * Balance Binary Tree or Red-black Tree instead of linked list
 
 
+# BIT MAP
+* A special kind of *Hash Table*.
 
+## Bloom Filter
+* Based on Bit Map
 
 
 
