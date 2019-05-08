@@ -26,12 +26,22 @@ Data Structure and Algorithm
 <image src="images/MindMap.jpg" height="360" />
 
 ### Coding Tips :beers:
+
 * `int m = (low + high) / 2;` has the overflow issue. Solutions:
 ```CPP
     int m = (high - low) / 2 + low;
     // or 
     int m = ((high - low) >> 1) + low;
 ```
+
+* modulo of two nums
+```Java
+// calculate the index of key
+index = key.hash & (capicity - 1);
+// which is equal to
+index = key.hash % capicity;
+```
+
 
 ### Complexity
 * Asymptotic space complexity
@@ -194,6 +204,10 @@ They are `T(n) = O(n)` and no-comparison between data.
 * Array-based - random access
 * Load Factor = (num of existed item) / (len of hash table)
   * default is 0.75 in Java
+* capacity is better to be 2^n (bitwise operation can be used instead of modulo operator)
+  ```Java
+  int index = hashvalue & (capicity - 1);
+  ```
 
 ### Hash Function
 * Requriements
