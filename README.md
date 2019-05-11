@@ -390,6 +390,7 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
   * Parse data from `n/2 to 1`, heapify each node from top to bottom.
     * because, for a **complete binary tree**, data `n/2+1 to n` are leaf nodes at the beginning.
     * and leaf nodes do NOT to heapify, since they would be heapified when heapifying nodes from `n/2 to 1`
+    * that is, heapify from `height-1` to `root`
   
 2. Sorting `O(n*logn)`
    * Top to bottom- same as deletion
