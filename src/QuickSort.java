@@ -11,18 +11,20 @@ class Solution {
 
         if (l >= r) return;
 
-        int pivot = handlePivot(nums, l, r);
-        int guard = nums[r];
+        handlePivot(nums, l, r);
+
+        int pivot = nums[r];
 
         int nextswap = l;
         for (int i = l; i < r; i++) {
-            if (nums[i] <= guard) {
+            if (nums[i] <= pivot) {
                 int t = nums[nextswap];
                 nums[nextswap] = nums[i];
                 nums[i] = t;
                 nextswap++;
             }
         }
+
         nums[r] = nums[nextswap];
         nums[nextswap] = guard;
 
