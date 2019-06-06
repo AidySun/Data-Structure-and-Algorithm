@@ -270,12 +270,16 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 * Skip list vs Red Black Tree  
   * _Why Redis uses skip list (and hash table) as its sorted list, but not red-black tree?_
   * skip list and RBT are all for eays query/insert/delete 
-  * **skip list is good for range searhc, which is better than RBT**
+  * **skip list is good for range search, which is better than RBT**
   * implementation of skip list is easier than RBT
   * skip list is more flex (by changing its index strategy)
   * RBT is earlier than SL, many `Map` type is implemented with RBT
 
 # TREE
+
+* To implement DFS/BFS with loop instead of recursion:
+  * Stack (FILO) is used for DFS
+  * Queue (FIFO) is used for BFS
 
 ## BINARY TREE
 
