@@ -216,7 +216,7 @@ They are `T(n) = O(n)` and no-comparison between data.
   * if key1 != key2 then hash(key1) != hash(key2)
 
 #### Hash conflict
-* **Open addressin**
+* **Open addressing**
   * Linear probing (`O(n)`)
     * 插入时 - 如果位置被占用，依次向后查找空闲位置
     * 查找时 - 比较散列值位置的元素，若不相等，依次向后查找, 直到空闲位置

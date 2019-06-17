@@ -1,4 +1,5 @@
 
+#include "stdafx.h"
 #include <iostream>
 #include "timer.h"
 
@@ -55,9 +56,10 @@ public:
 };
 
 int main() {
+	{
     Timer t("quick");
 
-    for (int i = 0; i < 500; i++) 
+    for (int i = 0; i < 5000; i++) 
     {
         {
             int switchTimes;
@@ -76,6 +78,8 @@ int main() {
             Solution::sortArray(a, 10, switchTimes);
         }
     }
+    }
+	system("pause");
 }
 
 /**
