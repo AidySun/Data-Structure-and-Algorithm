@@ -15,7 +15,12 @@ Data Structure and Algorithm
 - [HEAP SORTING](#heap-sorting)
 - [GRAPH](#graph)
 - [BIT MAP](#bit-map)
+- [TODO](#todo)
 - [Bloom Filter](#bloom-filter)
+- [String Matching](#string-matching)
+- [BF](#bf)
+- [RK](#rk)
+- [BM \(Moyer-Moore\)](#bm-moyer-moore)
 
 <!-- /MarkdownTOC -->
 
@@ -153,7 +158,7 @@ Find a guard and put smaller to left, bigger to right (refer to `partition()` fu
 * Time complexity : `O(n*logn)`
   * worst `T(n) = O(n^2)` _[when guard cannot split list properly]_
 * Space complexity : `O(1)`
-* Unstable
+* **Unstable**
 * In-place
 * Guard choosing to avoid worst TC:
   * random
@@ -175,7 +180,7 @@ They are `T(n) = O(n)` and no-comparison between data.
 ### Summary
   * `O(n^2)` Sortings are rearly used in reality
   * Quick sort vs Merge sort
-    * Quick sort has `O(^n)` complexity in the worth, whilc Merge sort has stable `O(n*logn)`
+    * Quick sort has `O(n^2)` complexity in the worth, whilc Merge sort has stable `O(n*logn)`
     * Merge sort has space complexity 
   * Quick sort (together with merge sort) is popular
     * `qsort()` in C is implemented with quick sort and merge sort
@@ -229,7 +234,7 @@ They are `T(n) = O(n)` and no-comparison between data.
   * conflicted items are stored in a linked chain in same hashed value
 
 #### Dynamic Expansion
-动态扩容后（2倍 in Java），数据如果一次性迁移会有performance isssue。可以把数据迁移分担到每次数据操作。
+动态扩容后（2倍 in Java），数据如果一次性迁移会有performance issue。可以把数据迁移分担到每次数据操作。
 E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，想从新表查找，不存在再查找旧表。
 
 ## HASHING
@@ -257,9 +262,8 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
   * MapReduce的基本设计思想
   * 取一条数据(e.g. 日志中的单词)做hash，与server num取模，相同数据会分配到同一server
 7. 分布式存储
-Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
-* Consistent Hanshing - 一致性Hash (每次添加或删除cache node只有小范围影响)
-  * TBD
+  * Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
+    * Consistent Hashing - 一致性Hash (每次添加或删除cache node只有小范围影响)
 
 # SKIP LIST
 
@@ -406,7 +410,7 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 
 # GRAPH
 
-* Consistent of vertext and edge.
+* Consistent of vertex and edge.
   * Directed graph - degree _(number of edges)_
   * Undirected graph - in-degree / out-degree
   * Weighted graph - each edge has its weight
@@ -429,10 +433,31 @@ Cache集群动态扩容，若hash值整体变更会发生雪崩效应。
 # BIT MAP
 * A special kind of *Hash Table*.
 
+## TODO
+
 ## Bloom Filter
 * Based on Bit Map
 
 
+# String Matching
+
+## BF
+
+* `O(m*n)`
+
+## RK
+
+* To match `m` length substring in `n` length string, `(n-m+1)` possible substrings
+* calculate hash value of all possible substring
+* compare hash value to match
+
+## BM (Moyer-Moore)
+
+* [Reference](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/boyer_moore.pdf)
+* bad char
+* good suffix
+
+* it's better than BMP algorithm
 
 
 
