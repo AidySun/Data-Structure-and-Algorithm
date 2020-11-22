@@ -14,6 +14,7 @@ Data Structure and Algorithm
 - [HEAP](#heap)
 - [HEAP SORTING](#heap-sorting)
 - [GRAPH](#graph)
+- [Dijkstra 最短路径算法](#dijkstra-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95)
 - [BIT MAP](#bit-map)
 - [TODO](#todo)
 - [Bloom Filter](#bloom-filter)
@@ -21,6 +22,8 @@ Data Structure and Algorithm
 - [BF](#bf)
 - [RK](#rk)
 - [BM \(Moyer-Moore\)](#bm-moyer-moore)
+- [DP](#dp)
+- [Topo Sort](#topo-sort)
 
 <!-- /MarkdownTOC -->
 
@@ -429,6 +432,10 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
     * Less space than Adjacency Matrix but more time
       * Balance Binary Tree or Red-black Tree instead of linked list
 
+## Dijkstra 最短路径算法
+
+- 最短路径算法，更加准确地说，是单源最短路径算法（一个顶点到一个顶点）。提到最短路径算法，最出名的莫过于 Dijkstra 算法了。
+  - 有向带权图
 
 # BIT MAP
 * A special kind of *Hash Table*.
@@ -459,10 +466,18 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 * it's better than BMP algorithm
 
+## DP
+
+重叠子问题、最优子结构、状态转移方程就是动态规划三要素。
 
 
+## Topo Sort
 
+- 应用于有向无环图
+- Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
+- DFS: visited adj, inverse adjacent, visit its array first, then self.
 
+- 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
 
 
 
