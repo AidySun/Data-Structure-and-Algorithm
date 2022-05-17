@@ -483,14 +483,24 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 ### Steps
 
+- [source|https://www.bilibili.com/video/BV1xb411e7ww?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click]
 1. 确定状态 : 数组 代表什么（状态）
   - 最后一步
   - 子问题
 2. 状态转移方程
+  - 根据子问题定义得到
+  - ，需要确认 dp[i] 的状态
+    - 只和前一个/两个状态有关
+      - 一层 loop
+      - E.g. [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/mai-mai-gu-piao-wen-ti-by-chen-wei-f-qrz4/)
+    - 和前面 i-1 个状态有关
+      - 二层 loop
+      - E.g. [鸡蛋坠落](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/solution/dong-tai-gui-hua-shu-xue-tui-dao-by-tang-1zz1/)
 3. 初始条件和边界情况
   - 初始条件：状态方程无法算出 && 又需要定义
   - 边界情况：不要数组越界
 4. 计算顺序
+  - 利用之前的计算结果
   - 从小到大
   - 从上到下
   - 在计算 f(x) 时，其依赖的 值应该已经确定
