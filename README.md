@@ -1,31 +1,115 @@
 Data Structure and Algorithm
 ====
-
-<!-- MarkdownTOC levels="1,2" autolink="true" -->
-
+- [DP](#dp)
+  - [Problems](#problems)
+  - [Steps](#steps)
+- [Topo Sort](#topo-sort)
+- [Backtrace](#backtrace)
+  - [Backtrace v.s. Dynamic Planing](#backtrace-vs-dynamic-planing)
 - [OVERVIEW](#overview)
-- [SORTING](#sorting)
-- [BINARY SEARCHING](#binary-searching)
-- [HASH TABLE](#hash-table)
+  - [Coding Tips :beers:](#coding-tips-beers)
+  - [Complexity](#complexity)
+  - [Recursion](#recursion)
+  - [Queue](#queue)
+  - [CAS & ABA](#cas--aba)
+  - [Bubble Sort](#bubble-sort)
+  - [Insertion Sort](#insertion-sort)
+  - [Shell's Sort](#shells-sort)
+  - [Selection Sort](#selection-sort)
+  - [Merge Sort](#merge-sort)
+  - [Quick Sort](#quick-sort)
+  - [Other](#other)
+  - [Summary](#summary)
+  - [Hash Function](#hash-function)
 - [HASHING](#hashing)
-- [SKIP LIST](#skip-list)
-- [TREE](#tree)
+  - [Requirement](#requirement)
+  - [Usages](#usages)
 - [BINARY TREE](#binary-tree)
-- [HEAP](#heap)
+  - [Binary Search Tree (BST)](#binary-search-tree-bst)
+  - [Balance Binary Search Tree 平衡二叉查找树](#balance-binary-search-tree-平衡二叉查找树)
+  - [Red-black Tree](#red-black-tree)
+  - [递归树](#递归树)
+  - [Sorted Array v.s. Hash Table v.s. Tree :beers:](#sorted-array-vs-hash-table-vs-tree-beers)
+  - [HEAP](#heap)
+  - [Storage](#storage)
+  - [Heapify](#heapify)
 - [HEAP SORTING](#heap-sorting)
-- [GRAPH](#graph)
-- [Dijkstra 最短路径算法](#dijkstra-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95)
-- [BIT MAP](#bit-map)
+  - [How to strote a graph](#how-to-strote-a-graph)
+- [Dijkstra 最短路径算法](#dijkstra-最短路径算法)
 - [TODO](#todo)
 - [Bloom Filter](#bloom-filter)
-- [String Matching](#string-matching)
 - [BF](#bf)
 - [RK](#rk)
-- [BM \(Moyer-Moore\)](#bm-moyer-moore)
-- [DP](#dp)
-- [Topo Sort](#topo-sort)
+- [BM (Moyer-Moore)](#bm-moyer-moore)
 
-<!-- /MarkdownTOC -->
+## DP
+
+### Problems
+
+1. 计数
+  - 有多少种方式走到右下角
+  - 有多少种方法选出k个数使得和是sum
+2. 求最大最小值
+  - 从左上到右下路径的最大数字和
+  - 最长递增子序列
+3. 求存在性
+  - 取石子游戏，先手是否必胜
+  - 能不能选出k个数使得和是sum
+
+
+### Steps
+
+- [source|https://www.bilibili.com/video/BV1xb411e7ww?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click]
+1. 确定状态 : 数组 代表什么（状态）
+  - 最后一步
+  - 子问题
+2. 状态转移方程
+  - 根据子问题定义得到
+  - ，需要确认 dp[i] 的状态
+    - 只和前一个/两个状态有关
+      - 一层 loop
+      - E.g. [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/mai-mai-gu-piao-wen-ti-by-chen-wei-f-qrz4/)
+    - 和前面 i-1 个状态有关
+      - 二层 loop
+      - E.g. [鸡蛋坠落](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/solution/dong-tai-gui-hua-shu-xue-tui-dao-by-tang-1zz1/)
+3. 初始条件和边界情况
+  - 初始条件：状态方程无法算出 && 又需要定义
+  - 边界情况：不要数组越界
+4. 计算顺序
+  - 利用之前的计算结果
+  - 从小到大
+  - 从上到下
+  - 在计算 f(x) 时，其依赖的 值应该已经确定
+重叠子问题、最优子结构、状态转移方程就是动态规划三要素。
+
+
+## Topo Sort
+
+- 应用于有向无环图
+- Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
+- DFS: visited adj, inverse adjacent, visit its array first, then self.
+
+- 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
+
+
+## Backtrace
+
+- Use one group of status variable to handle all cases.
+  - [all composition|https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/]
+
+### Backtrace v.s. Dynamic Planing
+
+https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
+
+- Same: 用于求解多阶段决策问题。多阶段决策问题即：
+  - 求解一个问题分为很多步骤（阶段）；
+  - 每一个步骤（阶段）可以有多种选择。
+- Diff: 
+  - 动态规划只需要求我们评估最优解是多少，最优解对应的具体解是什么并不要求。因此很适合应用于评估一个方案的效果；
+  - 回溯算法可以搜索得到所有的方案（当然包括最优解），但是本质上它是一种遍历算法，时间复杂度很高。
+
+
+
 
 
 
@@ -465,75 +549,6 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 * good suffix
 
 * it's better than BMP algorithm
-
-## DP
-
-### Problems
-
-1. 计数
-  - 有多少种方式走到右下角
-  - 有多少种方法选出k个数使得和是sum
-2. 求最大最小值
-  - 从左上到右下路径的最大数字和
-  - 最长递增子序列
-3. 求存在性
-  - 取石子游戏，先手是否必胜
-  - 能不能选出k个数使得和是sum
-
-
-### Steps
-
-- [source|https://www.bilibili.com/video/BV1xb411e7ww?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click]
-1. 确定状态 : 数组 代表什么（状态）
-  - 最后一步
-  - 子问题
-2. 状态转移方程
-  - 根据子问题定义得到
-  - ，需要确认 dp[i] 的状态
-    - 只和前一个/两个状态有关
-      - 一层 loop
-      - E.g. [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/mai-mai-gu-piao-wen-ti-by-chen-wei-f-qrz4/)
-    - 和前面 i-1 个状态有关
-      - 二层 loop
-      - E.g. [鸡蛋坠落](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/solution/dong-tai-gui-hua-shu-xue-tui-dao-by-tang-1zz1/)
-3. 初始条件和边界情况
-  - 初始条件：状态方程无法算出 && 又需要定义
-  - 边界情况：不要数组越界
-4. 计算顺序
-  - 利用之前的计算结果
-  - 从小到大
-  - 从上到下
-  - 在计算 f(x) 时，其依赖的 值应该已经确定
-重叠子问题、最优子结构、状态转移方程就是动态规划三要素。
-
-
-## Topo Sort
-
-- 应用于有向无环图
-- Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
-- DFS: visited adj, inverse adjacent, visit its array first, then self.
-
-- 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
-
-
-## Backtrace
-
-- Use one group of status variable to handle all cases.
-  - [all composition|https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/]
-
-### Backtrace v.s. Dynamic Planing
-
-https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
-
-- Same: 用于求解多阶段决策问题。多阶段决策问题即：
-  - 求解一个问题分为很多步骤（阶段）；
-  - 每一个步骤（阶段）可以有多种选择。
-- Diff: 
-  - 动态规划只需要求我们评估最优解是多少，最优解对应的具体解是什么并不要求。因此很适合应用于评估一个方案的效果；
-  - 回溯算法可以搜索得到所有的方案（当然包括最优解），但是本质上它是一种遍历算法，时间复杂度很高。
-
-
-
 
 
 
