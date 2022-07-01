@@ -5,7 +5,6 @@ Data Structure and Algorithm
     - [Problems](#problems)
     - [Steps](#steps)
   - [Sliding window](#sliding-window)
-  - [Topo Sort](#topo-sort)
   - [Backtrace](#backtrace)
     - [Backtrace v.s. Dynamic Planing](#backtrace-vs-dynamic-planing)
   - [OVERVIEW](#overview)
@@ -14,8 +13,6 @@ Data Structure and Algorithm
     - [Recursion](#recursion)
     - [Queue](#queue)
     - [CAS & ABA](#cas--aba)
-      - [CAS(check and set/swap):](#cascheck-and-setswap)
-      - [ABA](#aba)
 - [SORTING](#sorting)
     - [Bubble Sort](#bubble-sort)
     - [Insertion Sort](#insertion-sort)
@@ -28,8 +25,6 @@ Data Structure and Algorithm
 - [BINARY SEARCHING](#binary-searching)
 - [HASH TABLE](#hash-table)
     - [Hash Function](#hash-function)
-      - [Hash conflict](#hash-conflict)
-      - [Dynamic Expansion](#dynamic-expansion)
   - [HASHING](#hashing)
     - [Requirement](#requirement)
     - [Usages](#usages)
@@ -45,12 +40,11 @@ Data Structure and Algorithm
     - [HEAP](#heap-1)
     - [Storage](#storage)
     - [Heapify](#heapify)
-      - [Heap Deletion](#heap-deletion)
-      - [Heap Insertion](#heap-insertion)
-      - [Heap Usage](#heap-usage)
   - [HEAP SORTING](#heap-sorting)
 - [GRAPH](#graph)
     - [How to strote a graph](#how-to-strote-a-graph)
+  - [Topo Sort](#topo-sort)
+    - [DFS & BFS](#dfs--bfs)
   - [Dijkstra 最短路径算法](#dijkstra-最短路径算法)
 - [BIT MAP](#bit-map)
   - [TODO](#todo)
@@ -59,6 +53,7 @@ Data Structure and Algorithm
   - [BF](#bf)
   - [RK](#rk)
   - [BM (Moyer-Moore)](#bm-moyer-moore)
+
 
 ## DP
 
@@ -103,15 +98,6 @@ Data Structure and Algorithm
 ## Sliding window
 
 - https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
-
-## Topo Sort
-
-- 应用于有向无环图
-- Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
-- DFS: visited adj, inverse adjacent, visit its array first, then self.
-
-- 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
-
 
 ## Backtrace
 
@@ -389,6 +375,8 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 # TREE
 
+- BFS: Breadth First Search
+- DFS: Depth First Search
 * To implement DFS/BFS with loop instead of recursion:
   * Stack (FILO) is used for DFS
   * Queue (FIFO) is used for BFS
@@ -536,6 +524,79 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
     * Hash table with linked list
     * Less space than Adjacency Matrix but more time
       * Balance Binary Tree or Red-black Tree instead of linked list
+
+## Topo Sort
+
+- algorithm:
+  - find vertexes with 0 indegree
+  - find those verex connect by edges, with indegree -1
+  - remove 0-indegree vertex
+  - repeat
+
+- 应用于有向无环图
+- Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
+- DFS: visited adj, inverse adjacent, visit its array first, then self.
+
+- 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
+
+### DFS & BFS
+
+- DFS
+  - detect cycle in directed graph
+    - idea: find *back edge* (one vertex's edge to itself or one of its ancesters)
+    ```
+    // store graph in adj matrix
+    // visited array for all vertex
+    enum Status {
+      Unvisited,
+      Visting,
+      Visted 
+    };
+
+    for (v: all vertices) {
+      if (v.status == Unvisited) {
+        dfs(vertex)
+      }
+    }
+    bool dfs(vertex) {
+      v.status = Visting
+      for (w: adj[vertex]) {
+        if (w.status == Unvisited && dfs(w)) { // circle detected 1
+          return true
+        } else if (w.status == Visting) { // circle detected 2
+          return true
+        }
+      }
+      v.status = Visited
+    }
+    ```
+- BFS
+  #. detect cycle in directed graph
+    ```
+    vector<int> indegree(N, 0); // this is a simple case that each vertex has int value, so it uses index as key here, for complex type, a map/hashtable is needed?
+    // calculate indegree of each vertex
+    queue<Vertex> q;
+    // find vertices with 0 indegree and add to q
+    int visitedCount = 0;
+    while (!q.empty()) {
+      visitedCount++;
+      for (w: adj[q.top]) {
+        if (--indegree[w] == 0) {
+          q.push_back(w);
+        }
+      }
+    }
+
+    if (visitedCount != N) {
+      // circle detected
+    }
+
+    ```
+  #. detect cycle in undirected graph
+    ```
+
+    ```
+
 
 ## Dijkstra 最短路径算法
 
