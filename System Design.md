@@ -1,3 +1,14 @@
+# System Design
+
+1. [Scalability](#scalability)
+2. [Database](#database)
+   1. [RDBMS (Relational Database Management System)](#rdbms-relational-database-management-system)
+      1. [How to scale](#how-to-scale)
+         1. [master-slave](#master-slave)
+   2. [SQL vs NoSQL](#sql-vs-nosql)
+3. [Reverse Proxy](#reverse-proxy)
+   1. [Reverse Proxy vs Load balancer](#reverse-proxy-vs-load-balancer)
+4. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
 
 ## Scalability
 
@@ -15,8 +26,31 @@
       - inspect key direction the system goes.
       - architecture could handle heterogeneity (diff hardware)
 
+## Database
 
-## SQL vs NoSQL
+### RDBMS (Relational Database Management System)
+
+- AICD
+  - Atomic: each transaction is all or nothing.
+  - Isolation: transactions got same result no matter they are run serially or concurrently.
+  - Consistency: any transaction will bring DB from one state to another.
+  - Durability: once a transaction is committed/executed successfully, it remains so.
+
+#### How to scale
+  - master-slave replication
+  - master-master replication
+  - sharding(分片)
+  - federation(联合)
+  - denormalization(反格式化)
+  - SQL tuning
+
+##### master-slave
+
+- master : read and write
+- slave(s): readonly
+- master replicate writings to slave(s), in kind of tree structure
+
+### SQL vs NoSQL
 
 - SQL
   - structured data
@@ -56,12 +90,42 @@ It's a **web server* that centralizes internal services and provides unified int
 ### Reverse Proxy vs Load balancer
 
 
+## System Design Interview by Alex xu.pdf
+
+- DNS
+
+- load balancer
+  - web server pool
+
+- database tier
+  - replication
+    - master-slave(s)
+    - master-master
+    - *TODO*: how to avoid data loss
+
+- `------ above is solid serer and DB tiers, next is to improve load/response time`
+
+- CDN: content delivery network
+  - run by third party providers, users get content from closest CDN
+  - static content
+  - also can be dynamic content caching
+    - e.g. HTML pages based on request path
+  - TTL : time to live
+
+- cache tier
+  - layer between application server and DB
+  - read-through cache: not exist, get from DB and save as cached
+  - challenge: how to keep consistency between cache and DB
+    - https://efficientcodeblog.wordpress.com/2017/11/05/how-facebook-scale-memcache/#:~:text=Facebook%20used%20memcached%20as%20a%20building%20block%20to,to%20a%20shared%20storage%20pool%20at%20low%20cost.
+  - SPOF: single point of failure
+  - Eviction policy: LRU (last recently used)
 
 
+- `------ next is to consider scaling web tier horizontally`
 
-
-
-
-
+- stateless web server
+  - for stateful server, it could work by making load balancer route same user to same server, but that is not perfect solution, e.g. it has problems when adding/deleting server.
+  - get rid of session (by storing sessions in DB or other persistent storage, web server can access)
+    - more simpler, more robust, and scalable
 
 
