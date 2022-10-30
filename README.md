@@ -1,63 +1,57 @@
-Data Structure and Algorithm
-====
-- [Data Structure and Algorithm](#data-structure-and-algorithm)
-  - [DP](#dp)
-    - [Problems](#problems)
-    - [Steps](#steps)
-  - [Sliding window](#sliding-window)
-  - [Backtrace](#backtrace)
-    - [Backtrace v.s. Dynamic Planing](#backtrace-vs-dynamic-planing)
-  - [OVERVIEW](#overview)
-    - [Coding Tips :beers:](#coding-tips-beers)
-    - [Complexity](#complexity)
-    - [Recursion](#recursion)
-    - [Queue](#queue)
-    - [CAS & ABA](#cas--aba)
-- [SORTING](#sorting)
-    - [Bubble Sort](#bubble-sort)
-    - [Insertion Sort](#insertion-sort)
-    - [Shell's Sort](#shells-sort)
-    - [Selection Sort](#selection-sort)
-    - [Merge Sort](#merge-sort)
-    - [Quick Sort](#quick-sort)
-    - [Other](#other)
-    - [Summary](#summary)
-- [BINARY SEARCHING](#binary-searching)
-- [HASH TABLE](#hash-table)
-    - [Hash Function](#hash-function)
-  - [HASHING](#hashing)
-    - [Requirement](#requirement)
-    - [Usages](#usages)
-- [SKIP LIST](#skip-list)
-- [TREE](#tree)
-  - [BINARY TREE](#binary-tree)
-    - [Binary Search Tree (BST)](#binary-search-tree-bst)
-    - [Balance Binary Search Tree 平衡二叉查找树](#balance-binary-search-tree-平衡二叉查找树)
-    - [Red-black Tree](#red-black-tree)
-    - [递归树](#递归树)
-    - [Sorted Array v.s. Hash Table v.s. Tree :beers:](#sorted-array-vs-hash-table-vs-tree-beers)
-- [HEAP](#heap)
-    - [HEAP](#heap-1)
-    - [Storage](#storage)
-    - [Heapify](#heapify)
-  - [HEAP SORTING](#heap-sorting)
-- [GRAPH](#graph)
-    - [How to strote a graph](#how-to-strote-a-graph)
-  - [Topo Sort](#topo-sort)
-    - [DFS & BFS](#dfs--bfs)
-  - [Dijkstra 最短路径算法](#dijkstra-最短路径算法)
-- [BIT MAP](#bit-map)
-  - [TODO](#todo)
-  - [Bloom Filter](#bloom-filter)
-- [String Matching](#string-matching)
-  - [BF](#bf)
-  - [RK](#rk)
-  - [BM (Moyer-Moore)](#bm-moyer-moore)
+# Algorithm & Data Structure
 
+1. [Algorithm Categories](#algorithm-categories)
+   1. [DP](#dp)
+         1. [Problems](#problems)
+         2. [Steps](#steps)
+   2. [Sliding window](#sliding-window)
+   3. [Backtrace](#backtrace)
+         1. [Backtrace v.s. Dynamic Planing](#backtrace-vs-dynamic-planing)
+2. [Data Structure and Algorithm](#data-structure-and-algorithm)
+   1. [OVERVIEW](#overview)
+         1. [Coding Tips :beers:](#coding-tips-beers)
+         2. [Complexity](#complexity)
+         3. [Recursion](#recursion)
+         4. [Queue](#queue)
+         5. [CAS & ABA](#cas--aba)
+         6. [Bubble Sort](#bubble-sort)
+         7. [Insertion Sort](#insertion-sort)
+         8. [Shell's Sort](#shells-sort)
+         9. [Selection Sort](#selection-sort)
+         10. [Merge Sort](#merge-sort)
+         11. [Quick Sort](#quick-sort)
+         12. [Other](#other)
+         13. [Summary](#summary)
+         14. [Hash Function](#hash-function)
+   2. [HASHING](#hashing)
+         1. [Requirement](#requirement)
+         2. [Usages](#usages)
+   3. [BINARY TREE](#binary-tree)
+         1. [Binary Search Tree (BST)](#binary-search-tree-bst)
+         2. [Balance Binary Search Tree 平衡二叉查找树](#balance-binary-search-tree-平衡二叉查找树)
+         3. [Red-black Tree](#red-black-tree)
+         4. [递归树](#递归树)
+         5. [Sorted Array v.s. Hash Table v.s. Tree :beers:](#sorted-array-vs-hash-table-vs-tree-beers)
+         6. [HEAP](#heap)
+         7. [Storage](#storage)
+         8. [Heapify](#heapify)
+   4. [HEAP SORTING](#heap-sorting)
+         1. [How to strote a graph](#how-to-strote-a-graph)
+   5. [Topo Sort](#topo-sort)
+         1. [DFS & BFS](#dfs--bfs)
+   6. [Dijkstra 最短路径算法](#dijkstra-最短路径算法)
+   7. [TODO](#todo)
+   8. [Bloom Filter](#bloom-filter)
+   9. [BF](#bf)
+   10. [RK](#rk)
+   11. [BM (Moyer-Moore)](#bm-moyer-moore)
+   12. [English](#english)
 
-## DP
+## Algorithm Categories
 
-### Problems
+### DP
+
+##### Problems
 
 1. 计数
   - 有多少种方式走到右下角
@@ -70,7 +64,7 @@ Data Structure and Algorithm
   - 能不能选出k个数使得和是sum
 
 
-### Steps
+##### Steps
 
 - [source|https://www.bilibili.com/video/BV1xb411e7ww?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click]
 1. 确定状态 : 数组 代表什么（状态）
@@ -95,16 +89,17 @@ Data Structure and Algorithm
   - 在计算 f(x) 时，其依赖的 值应该已经确定
 重叠子问题、最优子结构、状态转移方程就是动态规划三要素。
 
-## Sliding window
+### Sliding window
 
 - https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
+  - finished LC: 3, 76
 
-## Backtrace
+### Backtrace
 
 - Use one group of status variable to handle all cases.
   - [all composition|https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/]
 
-### Backtrace v.s. Dynamic Planing
+##### Backtrace v.s. Dynamic Planing
 
 https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
 
@@ -117,14 +112,13 @@ https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai
 
 
 
+## Data Structure and Algorithm
 
-
-
-## OVERVIEW
+### OVERVIEW
 
 <image src="images/MindMap.jpg" height="360" />
 
-### Coding Tips :beers:
+##### Coding Tips :beers:
 
 * `int m = (low + high) / 2;` has the overflow issue. Solutions:
 ```CPP
@@ -142,7 +136,7 @@ index = key.hash % capicity;
 ```
 
 
-### Complexity
+##### Complexity
 * Asymptotic space complexity
 * Asymptotic time complexity
   * `O(1) < O(logn) < O(n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!)`
@@ -153,7 +147,7 @@ index = key.hash % capicity;
 > 不同的语句，执行时间也是不同的。时间复杂度只是表示执行时间随数据规模的变化趋势，
 > 并不能度量在特定的数据规模下，代码执行时间的多少。
 
-### Recursion
+##### Recursion
 *Issues:*
 * Invocation depth may cause stack overflow
   * set max depth
@@ -163,14 +157,14 @@ index = key.hash % capicity;
 * Circle invocation
   * TBD
 
-### Queue
+##### Queue
 * Unlock Queue
 * Circle queue
 
-### CAS & ABA
+##### CAS & ABA
 CAS is used for lock-free implementation.
 
-#### CAS(check and set/swap):
+####### CAS(check and set/swap):
 ```C
 bool cas(int* p, int oldv, int newv) {
     if (*p == oldv) {
@@ -204,7 +198,7 @@ EnQueue(x) {
 
 * CAS has ABA problem
 
-#### ABA
+####### ABA
 Solutions:
   1. Deferred reclamation to avoid memory reuse (delete and new again to same address)
     * garbage collection, like Java.
@@ -215,7 +209,7 @@ Solutions:
 # SORTING
 
 
-### [Bubble Sort](./src/BubbleSort.cpp)
+##### [Bubble Sort](./src/BubbleSort.cpp)
 * `T(n) = O(n^2)`
   * 满有序度 : `n*(n-1)/2`
   * `逆序度 = 满有序度 - 有序度`
@@ -224,22 +218,22 @@ Solutions:
 * Stable _[means relative order of same values won't be changed]_
   * usage : sorted by more than two attributes _[e.g. orders sorted by time and price]_
 
-### [Insertion Sort](./src/InsertionSort.cpp)
+##### [Insertion Sort](./src/InsertionSort.cpp)
 Sorted and unsorted parts, insert first unsorted to sorted part.
 * Time complexity : `O(n^2)`
 * Sorted in place 
 * Stable
 
-### Shell's Sort
+##### Shell's Sort
 **TODO**
 
-### [Selection Sort](./src/SelectionSort.cpp)
+##### [Selection Sort](./src/SelectionSort.cpp)
 Sorted and un-sorted parts, each loop selects smallest item from un-sorted and ~append to~ switch with the end of sorted part.
 * Time complexity : `O(n^2)`
 * Sorted in place
 * Unstable _[because of the switch]_
 
-### [Merge Sort](./src/MergeSort.cpp)
+##### [Merge Sort](./src/MergeSort.cpp)
 Using recursion to split sorting items and sort them independently, then merge those sorted items to be one.
 * Time complexity : `O(n*logn)` _[stable TC, no matter best, worst]_
 * Space complexity: `O(n)` 
@@ -247,7 +241,7 @@ Using recursion to split sorting items and sort them independently, then merge t
 * Stable sorting
 * **NOT** in-place _[memory required]_
 
-### [Quick Sort](./src/QuickSort.cpp)
+##### [Quick Sort](./src/QuickSort.cpp)
 Find a guard and put smaller to left, bigger to right (refer to `partition()` function). Recursion.
 * Time complexity : `O(n*logn)`
   * worst `T(n) = O(n^2)` _[when guard cannot split list properly]_
@@ -258,7 +252,7 @@ Find a guard and put smaller to left, bigger to right (refer to `partition()` fu
   * random
   * pick multiple (more than 3) and select the middle one or average value
 
-### Other
+##### Other
 They are `T(n) = O(n)` and no-comparison between data.
 
 * Bucket Sort (桶排序)
@@ -271,7 +265,7 @@ They are `T(n) = O(n)` and no-comparison between data.
   * Using bucket or counting sorting
   * Multiple times
 
-### Summary
+##### Summary
   * `O(n^2)` Sortings are rearly used in reality
   * Quick sort vs Merge sort
     * Quick sort has `O(n^2)` complexity in the worth, whilc Merge sort has stable `O(n*logn)`
@@ -308,13 +302,13 @@ They are `T(n) = O(n)` and no-comparison between data.
   int index = hashvalue & (capicity - 1);
   ```
 
-### Hash Function
+##### Hash Function
 * Requriements
   * generates a non-negative integer
   * if key1 == key2 then hash(key1) == hash(key2)
   * if key1 != key2 then hash(key1) != hash(key2)
 
-#### Hash conflict
+####### Hash conflict
 * **Open addressing**
   * Linear probing (`O(n)`)
     * 插入时 - 如果位置被占用，依次向后查找空闲位置
@@ -327,19 +321,19 @@ They are `T(n) = O(n)` and no-comparison between data.
 * **Chaining**
   * conflicted items are stored in a linked chain in same hashed value
 
-#### Dynamic Expansion
+####### Dynamic Expansion
 动态扩容后（2倍 in Java），数据如果一次性迁移会有performance issue。可以把数据迁移分担到每次数据操作。
 E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，想从新表查找，不存在再查找旧表。
 
-## HASHING
+### HASHING
 
-### Requirement
+##### Requirement
 * Input cannot be calculated from output
 * Input sensitive - tiny diff in input would cause huge diff in output
 * Low conflict
 * High performance
 
-### Usages
+##### Usages
 1. 安全加密 Encryption 
   * MD5. (MessagebDigest Algorithm) - 128 bits, unsecured
   * SHA (Secure Hash Algorithm)
@@ -381,7 +375,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
   * Stack (FILO) is used for DFS
   * Queue (FIFO) is used for BFS
 
-## BINARY TREE
+### BINARY TREE
 
 * 表示方式
   * 链式 : 最常用
@@ -396,7 +390,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
   * for a BT with k layers, 1~k-1 layers have full nodes, nodes in layer k are continuous from left to right.
   * 适合数组存储
 
-### Binary Search Tree (BST)
+##### Binary Search Tree (BST)
 * Any node is larger than ALL its left children, and smaller than ALL its right children. 
 * TC : `O(logn)` _[same with the height of tree]_
 * 删除
@@ -407,24 +401,24 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
   * 存在同一节点（链式）
 * 二叉查找树的高度可能超过logn，而导致时间复杂度退化(最坏会退化成链表)。平衡二叉查找树可解决此问题。
 
-### Balance Binary Search Tree 平衡二叉查找树
+##### Balance Binary Search Tree 平衡二叉查找树
 * 任何节点左右子树高度差不大于1
   * 实际应用可能会超过1， 相对平衡
 * 满二叉树、完全二叉树为平衡二叉树，非完全二叉树有可能是平衡二叉树 (左子树为空，右子树非空)
 * AVL Tree
 * Red-black tree 最为著名
 
-### Red-black Tree 
+##### Red-black Tree 
 * High performance to search, insert and delete
 * Height of RBT is about `2 * logn`
 * Skip List could be an alternateness of RBT
   * Skip list has easier implementation than RBT
   * Redis uses Skip List as sorted set
 
-### 递归树
+##### 递归树
 * 1个细胞的生命周期是3小时，1小时分裂一次，求N小时后有多少细胞。
 
-### Sorted Array v.s. Hash Table v.s. Tree :beers:
+##### Sorted Array v.s. Hash Table v.s. Tree :beers:
 
 * Sorted Array
 >   * good for sorted data
@@ -450,41 +444,41 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 * [BinaryHeap.cpp](https://gist.github.com/AidySun/66c92ac88455288fa629a844413c598e)
 
-### HEAP
+##### HEAP
 * Heap is complete binary tree.
 * Value of a node is >= (big heading) or <= (small heading) than its children.
 * complete binary tree is suitable to be stored in array
 
-### Storage
+##### Storage
 * The root index starts from `1`.
 * For the node with index `i`, its left child index would be `2 * i`, and right child is `2 * i + 1`
 * In array, the storage starts from 1 as well. That mean the index 0 in array is not used.
 
-### Heapify
+##### Heapify
 `O(logn)`
 * Top to Bottom
   * starts from root, find largest child greater than self, and switch, repeat
 * Bottom to Top
   * switch with parent if it is greater than self, repeat
 
-#### Heap Deletion 
+####### Heap Deletion 
 0. Delete the node from tree directly would bring *hole* to the tree, following approach would be better:
 1. Switch node with the last element
 2. Delete last
 3. Heapify node from top to bottom
 
-#### Heap Insertion 
+####### Heap Insertion 
 1. Append new item to end
 2. Heapify node from bottom to top
 
-#### Heap Usage
+####### Heap Usage
 * Top `k` data
 * `k%` value (e.g. middle value of a number sequence)
   * two heap, one stores `k% * n` using big heading, and the other stores `(1-k%) * n` with small heading
   * new value compaires with two root nodes to deceide which heap to insert
   * balance two heap after insert/delete
 
-## HEAP SORTING
+### HEAP SORTING
 * TC = `O(n*logn)`
 * Sorted in place
 * Unstable
@@ -511,7 +505,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
   * Undirected graph - in-degree / out-degree
   * Weighted graph - each edge has its weight
 
-### How to strote a graph
+##### How to strote a graph
 1. Adjacency Matrix 
     * Two degree arrays
     * Pros
@@ -525,7 +519,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
     * Less space than Adjacency Matrix but more time
       * Balance Binary Tree or Red-black Tree instead of linked list
 
-## Topo Sort
+### Topo Sort
 
 - algorithm:
   - find vertexes with 0 indegree
@@ -539,7 +533,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 - 拓扑排序应用非常广泛，解决的问题的模型也非常一致。凡是需要通过局部顺序来推导全局顺序的，一般都能用拓扑排序来解决。除此之外，拓扑排序还能检测图中环的存在。对于 Kahn 算法来说，如果最后输出出来的顶点个数，少于图中顶点个数，图中还有入度不是 0 的顶点，那就说明，图中存在环。
 
-### DFS & BFS
+##### DFS & BFS
 
 - DFS
   - detect cycle in directed graph
@@ -598,7 +592,7 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
     ```
 
 
-## Dijkstra 最短路径算法
+### Dijkstra 最短路径算法
 
 - 最短路径算法，更加准确地说，是单源最短路径算法（一个顶点到一个顶点）。提到最短路径算法，最出名的莫过于 Dijkstra 算法了。
   - 有向带权图
@@ -606,25 +600,25 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 # BIT MAP
 * A special kind of *Hash Table*.
 
-## TODO
+### TODO
 
-## Bloom Filter
+### Bloom Filter
 * Based on Bit Map
 
 
 # String Matching
 
-## BF
+### BF
 
 * `O(m*n)`
 
-## RK
+### RK
 
 * To match `m` length substring in `n` length string, `(n-m+1)` possible substrings
 * calculate hash value of all possible substring
 * compare hash value to match
 
-## BM (Moyer-Moore)
+### BM (Moyer-Moore)
 
 * [Reference](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/boyer_moore.pdf)
 * bad char
@@ -634,7 +628,9 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 
 
+### English
 
+- `interactively` and `recursively`
 
 
 
