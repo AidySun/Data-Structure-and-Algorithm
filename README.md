@@ -93,7 +93,8 @@
 
 - https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
   - finished LC: 3, 76
-
+- https://leetcode.cn/problems/minimum-window-substring/solution/by-flix-1kac/
+  - finished LC: 17.18. Shortest Supersequence LCCI
 ### Backtrace
 
 - Use one group of status variable to handle all cases.
