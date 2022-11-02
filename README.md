@@ -95,6 +95,7 @@
   - finished LC: 3, 76
 - https://leetcode.cn/problems/minimum-window-substring/solution/by-flix-1kac/
   - finished LC: 17.18. Shortest Supersequence LCCI
+
 ### Backtrace
 
 - Use one group of status variable to handle all cases.
@@ -522,13 +523,14 @@ E.g.新表中中的每次写入都从旧表中迁移一条数据。查询时，�
 
 ### Topo Sort
 
+
 - algorithm:
   - find vertexes with 0 indegree
   - find those verex connect by edges, with indegree -1
   - remove 0-indegree vertex
   - repeat
 
-- 应用于有向无环图
+- 应用于 有向无环图 (DAG: Directed acyclic graph)
 - Kahn: find all items with 0 input count, remove them and decrease its dependencies input count.
 - DFS: visited adj, inverse adjacent, visit its array first, then self.
 

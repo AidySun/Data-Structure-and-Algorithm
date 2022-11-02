@@ -1,14 +1,50 @@
 # System Design
 
-1. [Scalability](#scalability)
-2. [Database](#database)
+1. [Availability](#availability)
+   1. [fail-over](#fail-over)
+   2. [replication](#replication)
+2. [Scalability](#scalability)
+         1. [Scalability v.s. Performance](#scalability-vs-performance)
+         2. [Scalability v.s. Extensibility](#scalability-vs-extensibility)
+3. [Database](#database)
    1. [RDBMS (Relational Database Management System)](#rdbms-relational-database-management-system)
       1. [How to scale](#how-to-scale)
          1. [master-slave](#master-slave)
+         2. [master-master](#master-master)
+         3. [Replication](#replication-1)
+      2. [Federation](#federation)
    2. [SQL vs NoSQL](#sql-vs-nosql)
-3. [Reverse Proxy](#reverse-proxy)
+4. [Load Balancer](#load-balancer)
+5. [Reverse Proxy](#reverse-proxy)
    1. [Reverse Proxy vs Load balancer](#reverse-proxy-vs-load-balancer)
-4. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
+6. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
+
+
+
+- scalability
+- stability
+- availability
+- consistency
+
+- Everything is a trade-off
+
+- CAP theorem (in a **distributed computer system**)
+  - consistency: each read gets the most recent write, or error
+  - availability: a non-failing request receives a response (no error, no timeout)
+  - partition tolerance: system continues to operate 
+
+## Availability
+
+- two patterns to support high availability
+  - fail-over
+  - replication
+
+### fail-over
+
+### replication
+
+
+
 
 ## Scalability
 
@@ -25,6 +61,18 @@
       - the system should take scalability into account.
       - inspect key direction the system goes.
       - architecture could handle heterogeneity (diff hardware)
+
+##### Scalability v.s. Performance
+
+- performance issue means the system is slow for a single user.
+- scalability problem means the system is fast for single user, but slow for heavy load.
+
+##### Scalability v.s. Extensibility
+  - scalability : ability to handle a growing amount of work, 
+    - generally means reduplication(repeat) of same system/server.
+  - extensibility : system design principle, to provide for change - typically enhancements - while minimizing impact to existing system.
+    - generally means to add new functionality / component to system
+
 
 ## Database
 
@@ -47,8 +95,28 @@
 ##### master-slave
 
 - master : read and write
-- slave(s): readonly
-- master replicate writings to slave(s), in kind of tree structure
+- slave(s): readonly, master replicates writes to slave
+- disadvantage of master-slave
+  - refer to _disadvantage of replication_ in [RDBMS-replication](#replication-1)
+
+##### master-master
+
+- disadvantage of master-master
+  - a load balancer (or app modification) is needed to distribute requests to diff servers
+  - most master-master either loosely consistence or increased write latency due to synchronization
+  - refer to _disadvantage of replication_ in [RDBMS-replication](#replication-1)
+
+##### Replication
+
+- disadvantage of replication
+  - potential loss of data if master fails before new written data is replicated
+  - data writes in master are replicated to read servers, may slow down reads
+
+#### Federation
+
+- (or functional partitioning) splits up DB by functions
+- disadvantage
+  - joining data from two DBs is more complex with a server link
 
 ### SQL vs NoSQL
 
@@ -70,6 +138,17 @@
   - very data intensive workload
   - very high throughput for IOPS
 
+## Load Balancer
+
+- it's web server pool
+- balance methods
+  - random
+  - least loaded
+  - round robin (with weight)
+  - hash
+  - session/cookies
+  - layer 4 (transport layer)
+  - layer 7 (application layer)
 
 ## Reverse Proxy
 
@@ -89,13 +168,37 @@ It's a **web server* that centralizes internal services and provides unified int
 
 ### Reverse Proxy vs Load balancer
 
+- load balancer used when there are multiple servers provide same services
+
+- Nginx load balancer sample
+  ```
+  upstream my_server_pool {
+    server 192.168.1.2:8080;
+    server 192.168.2.3:8080;
+    server abc.com:8080 weight = 2;
+    ip_hash; // server select algorithm
+ 
+  }
+  server {
+    listen 80;
+    location / {
+        pass_proxy http://my_server_pool;
+    }
+  }
+  ```
+
+- Nginx reverse proxy sample
+  ```
+  location ~ /vod/ {
+    proxy_pass  http://127.0.0.1:8081
+  }
+  ```
+
 
 ## System Design Interview by Alex xu.pdf
 
 - DNS
 
-- load balancer
-  - web server pool
 
 - database tier
   - replication
