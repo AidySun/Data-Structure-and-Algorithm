@@ -6,7 +6,8 @@
 2. [Scalability](#scalability)
          1. [Scalability v.s. Performance](#scalability-vs-performance)
          2. [Scalability v.s. Extensibility](#scalability-vs-extensibility)
-3. [Database](#database)
+3. [Caching](#caching)
+4. [Database](#database)
    1. [RDBMS (Relational Database Management System)](#rdbms-relational-database-management-system)
       1. [How to scale](#how-to-scale)
          1. [master-slave](#master-slave)
@@ -14,10 +15,10 @@
          3. [Replication](#replication-1)
       2. [Federation](#federation)
    2. [SQL vs NoSQL](#sql-vs-nosql)
-4. [Load Balancer](#load-balancer)
-5. [Reverse Proxy](#reverse-proxy)
+5. [Load Balancer](#load-balancer)
+6. [Reverse Proxy](#reverse-proxy)
    1. [Reverse Proxy vs Load balancer](#reverse-proxy-vs-load-balancer)
-6. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
+7. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
 
 
 
@@ -72,6 +73,22 @@
     - generally means reduplication(repeat) of same system/server.
   - extensibility : system design principle, to provide for change - typically enhancements - while minimizing impact to existing system.
     - generally means to add new functionality / component to system
+
+
+
+## Caching
+
+- cache-aside: when read, check cache, if not found, get DB and add to cache
+  - 3 trips when missing cache
+  - data is stale if changed in DB.
+    - mitigating solution: TTL to force update cache, write-through
+- write-through: when write, write to cahce 1st, then DB, return
+  - slow write
+  - new added cache server is empty until writes
+    - _cache-aside_ + _write through_ can mitigate the issue
+  - data wrote to cache may never be read (set a TTL to remove it?)
+
+
 
 
 ## Database
