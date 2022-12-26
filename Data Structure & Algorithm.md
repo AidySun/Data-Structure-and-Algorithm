@@ -1,19 +1,12 @@
-# Algorithm & Data Structure
+# Data Structure & Algorithm
 
-1. [Algorithm Categories](#algorithm-categories)
-   1. [DP](#dp)
-         1. [Problems](#problems)
-         2. [Steps](#steps)
-   2. [Sliding window](#sliding-window)
-   3. [Backtrace](#backtrace)
-         1. [Backtrace v.s. Dynamic Planing](#backtrace-vs-dynamic-planing)
-2. [Data Structure and Algorithm](#data-structure-and-algorithm)
+1. [Data Structure and Algorithm](#data-structure-and-algorithm)
    1. [OVERVIEW](#overview)
          1. [Coding Tips :beers:](#coding-tips-beers)
          2. [Complexity](#complexity)
          3. [Recursion](#recursion)
          4. [Queue](#queue)
-         5. [CAS & ABA](#cas--aba)
+         5. [CAS \& ABA](#cas--aba)
          6. [Bubble Sort](#bubble-sort)
          7. [Insertion Sort](#insertion-sort)
          8. [Shell's Sort](#shells-sort)
@@ -32,13 +25,13 @@
          3. [Red-black Tree](#red-black-tree)
          4. [递归树](#递归树)
          5. [Sorted Array v.s. Hash Table v.s. Tree :beers:](#sorted-array-vs-hash-table-vs-tree-beers)
-         6. [HEAP](#heap)
+         6. [HEAP](#heap-1)
          7. [Storage](#storage)
          8. [Heapify](#heapify)
    4. [HEAP SORTING](#heap-sorting)
          1. [How to strote a graph](#how-to-strote-a-graph)
    5. [Topo Sort](#topo-sort)
-         1. [DFS & BFS](#dfs--bfs)
+         1. [DFS \& BFS](#dfs--bfs)
    6. [Dijkstra 最短路径算法](#dijkstra-最短路径算法)
    7. [TODO](#todo)
    8. [Bloom Filter](#bloom-filter)
@@ -46,73 +39,6 @@
    10. [RK](#rk)
    11. [BM (Moyer-Moore)](#bm-moyer-moore)
    12. [English](#english)
-
-## Algorithm Categories
-
-### DP
-
-##### Problems
-
-1. 计数
-  - 有多少种方式走到右下角
-  - 有多少种方法选出k个数使得和是sum
-2. 求最大最小值
-  - 从左上到右下路径的最大数字和
-  - 最长递增子序列
-3. 求存在性
-  - 取石子游戏，先手是否必胜
-  - 能不能选出k个数使得和是sum
-
-
-##### Steps
-
-- [source|https://www.bilibili.com/video/BV1xb411e7ww?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click]
-1. 确定状态 : 数组 代表什么（状态）
-  - 最后一步
-  - 子问题
-2. 状态转移方程
-  - 根据子问题定义得到
-  - ，需要确认 dp[i] 的状态
-    - 只和前一个/两个状态有关
-      - 一层 loop
-      - E.g. [买卖股票](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/mai-mai-gu-piao-wen-ti-by-chen-wei-f-qrz4/)
-    - 和前面 i-1 个状态有关
-      - 二层 loop
-      - E.g. [鸡蛋坠落](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/solution/dong-tai-gui-hua-shu-xue-tui-dao-by-tang-1zz1/)
-3. 初始条件和边界情况
-  - 初始条件：状态方程无法算出 && 又需要定义
-  - 边界情况：不要数组越界
-4. 计算顺序
-  - 利用之前的计算结果
-  - 从小到大
-  - 从上到下
-  - 在计算 f(x) 时，其依赖的 值应该已经确定
-重叠子问题、最优子结构、状态转移方程就是动态规划三要素。
-
-### Sliding window
-
-- https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
-  - finished LC: 3, 76
-- https://leetcode.cn/problems/minimum-window-substring/solution/by-flix-1kac/
-  - finished LC: 17.18. Shortest Supersequence LCCI
-
-### Backtrace
-
-- Use one group of status variable to handle all cases.
-  - [all composition|https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/]
-
-##### Backtrace v.s. Dynamic Planing
-
-https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
-
-- Same: 用于求解多阶段决策问题。多阶段决策问题即：
-  - 求解一个问题分为很多步骤（阶段）；
-  - 每一个步骤（阶段）可以有多种选择。
-- Diff: 
-  - 动态规划只需要求我们评估最优解是多少，最优解对应的具体解是什么并不要求。因此很适合应用于评估一个方案的效果；
-  - 回溯算法可以搜索得到所有的方案（当然包括最优解），但是本质上它是一种遍历算法，时间复杂度很高。
-
-
 
 ## Data Structure and Algorithm
 
