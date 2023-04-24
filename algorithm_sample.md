@@ -7,6 +7,7 @@
 3. [dfs](#dfs)
 4. [lower\_bound](#lower_bound)
 5. [Binary search](#binary-search)
+6. [random with shuffle bags](#random-with-shuffle-bags)
 
 ------------------
 
@@ -209,6 +210,39 @@ template <class ForwardIterator, class T>
 
 
 
+## random with shuffle bags
+
+> Taking the same example as above, we would like to pick fruits at random. However, relying on random number generation every time a fruit is selected can lead to a less uniform distribution. If the player is lucky (or unlucky), they could get the same fruit three or more times in a row.
+
+> You can accomplish this using the shuffle bag pattern. It works by removing an element from the array after choosing it. After multiple selections, the array ends up empty. When that happens, you reinitialize it to its default value:
+
+```go
+var _fruits = ["apple", "orange", "pear", "banana"]
+# A copy of the fruits array so we can restore the original value into `fruits`.
+var _fruits_full = []
+
+
+func _ready():
+    randomize()
+    _fruits_full = _fruits.duplicate()
+    _fruits.shuffle()
+
+    for i in 100:
+        print(get_fruit())
+
+
+func get_fruit():
+    if _fruits.empty():
+        # Fill the fruits array again and shuffle it.
+        _fruits = _fruits_full.duplicate()
+        _fruits.shuffle()
+
+    # Get a random fruit, since we shuffled the array,
+    # and remove it from the `_fruits` array.
+    var random_fruit = _fruits.pop_front()
+    # Prints "apple", "orange", "pear", or "banana" every time the code runs.
+    return random_fruit
+```
 
 
 
