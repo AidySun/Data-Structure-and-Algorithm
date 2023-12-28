@@ -1,38 +1,25 @@
 # System Design
 
-1. [Availability](#availability)
-   1. [fail-over](#fail-over)
-   2. [replication](#replication)
-2. [Scalability](#scalability)
-         1. [Scalability v.s. Performance](#scalability-vs-performance)
-         2. [Scalability v.s. Extensibility](#scalability-vs-extensibility)
-3. [Caching](#caching)
-4. [Database](#database)
-   1. [RDBMS (Relational Database Management System)](#rdbms-relational-database-management-system)
-      1. [How to scale](#how-to-scale)
-         1. [master-slave](#master-slave)
-         2. [master-master](#master-master)
-         3. [Replication](#replication-1)
-      2. [Federation](#federation)
-   2. [SQL vs NoSQL](#sql-vs-nosql)
-5. [Load Balancer](#load-balancer)
-6. [Reverse Proxy](#reverse-proxy)
-   1. [Reverse Proxy vs Load balancer](#reverse-proxy-vs-load-balancer)
-7. [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
-
-
-
-- scalability
-- stability
-- availability
-- consistency
-
-- Everything is a trade-off
-
-- CAP theorem (in a **distributed computer system**)
-  - consistency: each read gets the most recent write, or error
-  - availability: a non-failing request receives a response (no error, no timeout)
-  - partition tolerance: system continues to operate 
+- [System Design](#system-design)
+  - [Availability](#availability)
+    - [fail-over](#fail-over)
+    - [replication](#replication)
+  - [Scalability](#scalability)
+        - [Scalability v.s. Performance](#scalability-vs-performance)
+        - [Scalability v.s. Extensibility](#scalability-vs-extensibility)
+  - [Caching](#caching)
+  - [Database](#database)
+    - [RDBMS (Relational Database Management System)](#rdbms-relational-database-management-system)
+      - [How to scale](#how-to-scale)
+        - [master-slave](#master-slave)
+        - [master-master](#master-master)
+        - [Replication](#replication-1)
+      - [Federation](#federation)
+    - [SQL vs NoSQL](#sql-vs-nosql)
+  - [Load Balancer](#load-balancer)
+  - [Reverse Proxy](#reverse-proxy)
+    - [Reverse Proxy vs Load balancer](#reverse-proxy-vs-load-balancer)
+  - [System Design Interview by Alex xu.pdf](#system-design-interview-by-alex-xupdf)
 
 ## Availability
 
@@ -42,12 +29,19 @@
 
 ### fail-over
 
+- load balancer: send mesages to alive servers, remove dead servers
+- status observer and auto switch
+- backup and switch ()
+
 ### replication
 
 
 
 
 ## Scalability
+
+- Good articles : https://web.archive.org/web/20220530193926/https://www.lecloud.net/tagged/scalability
+
 
 - https://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html
   - ~Def~ when we increase the resources in a system, it results in increased performance in a manner proportional to resources added.
